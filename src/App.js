@@ -3,7 +3,7 @@
 function App() {
   return (
     <div className="App">
-      <h1>Main Branch</h1>
+      <h1>Dev Branch</h1>
     </div>
   );
 }
