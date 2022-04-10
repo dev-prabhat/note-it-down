@@ -1,0 +1,23 @@
+.landing-page-container{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-areas: "hero-info hero-image";
+    height: calc(100vh - 5rem);
+}
+
+.hero-info{
+    grid-area: hero-info;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.hero-image{
+   grid-row: hero-image; 
+   height: 100%;
+}
+
+.highlight{
+    color: var(--primary-theme-color);
+}
