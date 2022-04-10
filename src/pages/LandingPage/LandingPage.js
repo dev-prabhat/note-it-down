@@ -6,10 +6,10 @@ export const LandingPage = () => {
         <>
            <main className="landing-page-container">
                <section className="hero-info">
-                   <h1 className='hero-title head-xl'>Note It Down</h1>
+                   <h1 className='hero-title head-xl'>NoteIt <span className="highlight">Down</span></h1>
                    <div className="hero-detail">
-                        <h2 className="hero-subtitle head-lg">Meet your modern Note Taking Application</h2>
-                        <p className="hero-description head-md">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
+                        <h2 className="hero-subtitle head-lg">Meet your modern <span className="highlight"> Note Taking Application</span></h2>
+                        <p className="hero-description head-md text-gray"> Don't understand how to manage your daily task and workflow , Here is your solution Just Create your Account and manages your workflow in modern way  
                         </p>
                    </div> 
                    <div className="action-buttons">
