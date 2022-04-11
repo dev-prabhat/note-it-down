@@ -3,6 +3,8 @@
     grid-template-columns: repeat(2,1fr);
     grid-template-areas: "hero-info hero-image";
     height: calc(100vh - 5rem);
+
+    margin: 2.5rem 5rem;
 }
 
 .hero-info{
