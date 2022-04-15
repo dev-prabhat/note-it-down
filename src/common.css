@@ -9,8 +9,5 @@
 
 body{
     font-family: 'Montserrat', sans-serif;
-}
-
-.app{
-    padding: 2.5rem 5rem;
+    background-color: var(--secondary-theme-color);
 }

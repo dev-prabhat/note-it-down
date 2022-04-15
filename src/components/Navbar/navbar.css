@@ -1,0 +1,10 @@
+.side-navbar{
+    grid-area: navbar;
+    width: 25%;
+}
+
+.active-link{
+    font-weight: 900;
+    background: var(--primary-theme-shade-20);
+    border-radius: 5em;
+}

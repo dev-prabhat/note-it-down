@@ -1,0 +1,21 @@
+.website-header{
+    grid-area: header;
+    padding: 0.5em 1.5em;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0px 0px 10px 2px var(--primary-theme-shade-20);
+}
+
+.header-title{
+    text-decoration: none;
+    color: var(--dark-color);
+}
+
+.search-input{
+    width: 30%;
+    margin: 0 auto 0 10rem;
+    height: 3em;
+}
