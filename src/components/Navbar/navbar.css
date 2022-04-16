@@ -1,6 +1,7 @@
 .side-navbar{
     grid-area: navbar;
-    width: 100%;
+    width: 70%;
+    margin: 5px 0;
 }
 
 .active-link{
@@ -8,3 +9,8 @@
     background: var(--primary-theme-shade-20);
     border-radius: 5em;
 }
+
+.icon-style{
+    margin: 0 10px;
+}
+
