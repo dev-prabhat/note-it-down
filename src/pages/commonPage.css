@@ -1,7 +1,10 @@
 .main-page{
     display: grid;
     grid-template-areas: 
-    "header"
-    "navbar";
+    "header header header header"
+    "navbar page-content page-content page-content";
 }
 
+.page-content{
+    grid-area: page-content;
+}

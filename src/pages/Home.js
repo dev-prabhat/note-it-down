@@ -1,4 +1,4 @@
-import {Header, NavBar} from "../components/index"
+import {Header, InputForm, NavBar} from "../components"
 import "./commonPage.css"
 
 export const Home = () => {
@@ -7,6 +7,9 @@ export const Home = () => {
          <main className="main-page">
              <Header/>
              <NavBar/>
+             <div className="page-content">
+              <InputForm/>
+             </div>
          </main>
         </>
     )
