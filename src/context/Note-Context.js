@@ -4,14 +4,13 @@ const NoteContext = createContext()
 
 const NoteProvider = ({children}) => {
   const [notes, setNotes] = useState([])
-  const [singleNote, setSingleNote] = useState({title:"",body:""})
+  const [singleNote, setSingleNote] = useState({title:"",body:"",label:""})
 
   const handleSubmit = (e) => {
       e.preventDefault()
       setNotes(prev => [...prev,singleNote])
-      setSingleNote({title:"",body:""})
+      setSingleNote({title:"",body:"",label:""})
   } 
-  console.log(notes)
 
   return(
       <NoteContext.Provider value={{singleNote,setSingleNote,handleSubmit}}>
