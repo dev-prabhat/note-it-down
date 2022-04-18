@@ -17,7 +17,7 @@ export const InputForm = () => {
                 value={singleNote.title}
                 required
             />
-            <BsFillPinFill className="pin-Icon icons-common "/>
+            <BsFillPinFill title="pin" className="pin-Icon icons-common "/>
             <textarea 
                 className="input-field padding-xs" 
                 placeholder="write here..." 
@@ -31,24 +31,26 @@ export const InputForm = () => {
             </textarea>
             <div className="action-container">
             <div className="main-action-btn">
-                <IoIosAddCircleOutline className="icons-common margin-xs" onClick={handleSubmit}/>
-                <IoIosColorPalette className="icons-common margin-xs"/>
+                <IoIosAddCircleOutline title="add" className="icons-common margin-xs" onClick={handleSubmit}/>
+                <IoIosColorPalette title="bg-color" className="icons-common margin-xs"/>
                 <select 
+                    title="labels"
                     value={singleNote.label}
                     className="margin-xs padding-xxs font-weight-bold text-gray" 
                     onChange={(e)=>setSingleNote((prev)=>({...prev,label:e.target.value}))}
                 >
-                    <option>Office</option>
-                    <option>Home</option>
-                    <option>Blog</option>
-                    <option>Diet</option>
-                    <option>Exercise</option>
-                    <option>Others</option>
+                    <option>Choose</option>
+                    <option value="Office">Office</option>
+                    <option value="Home">Home</option>
+                    <option value="Blog">Blog</option>
+                    <option value="Diet">Diet</option>
+                    <option value="Exercise">Exercise</option>
+                    <option value="Others">Others</option>
                 </select>
                 </div>
                 <div>
-                    <BiArchiveIn className="icons-common margin-xs"/>
-                    <BsTrash className="icons-common margin-xs"/>
+                    <BiArchiveIn title="archive" className="icons-common margin-xs"/>
+                    <BsTrash title="trash" className="icons-common margin-xs"/>
                 </div>
             </div>
             

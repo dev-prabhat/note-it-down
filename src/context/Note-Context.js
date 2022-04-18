@@ -1,4 +1,4 @@
-import React,{createContext,useContext,useState} from "react"
+import React,{createContext,useContext,useState,useEffect} from "react"
 
 const NoteContext = createContext()
 
@@ -11,6 +11,10 @@ const NoteProvider = ({children}) => {
       setNotes(prev => [...prev,singleNote])
       setSingleNote({title:"",body:"",label:""})
   } 
+
+  useEffect(()=>{
+    localStorage.setItem("mynotes",JSON.stringify(notes))   
+  },[notes])
 
   return(
       <NoteContext.Provider value={{singleNote,setSingleNote,handleSubmit}}>
