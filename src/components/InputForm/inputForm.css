@@ -1,0 +1,40 @@
+.input-form{
+    grid-area: inputForm;
+
+    width: 50%;
+    margin: 10px auto;
+
+    padding: 5px;
+    position: relative;
+    height: 30vh;
+
+    box-shadow: 0 0 5px 1px var(--dark-theme-light-color);
+}
+
+.input-field{
+    border:none;
+    width: 95%;
+    resize: none;
+}
+
+.pin-Icon{
+    position: absolute;
+    top:5px;
+    right:2px;
+}
+
+.action-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.icons-common{
+   cursor: pointer;
+   font-size: 1.5rem;
+}
+
+.main-action-btn{
+    display: flex;
+    align-items: center;
+}
