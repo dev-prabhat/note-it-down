@@ -26,15 +26,16 @@
 .action-container{
     display: flex;
     align-items: center;
-    justify-content: space-between;
 }
 
 .icons-common{
    cursor: pointer;
-   font-size: 1.5rem;
+   font-size: 2rem;
+   padding: 5px;
 }
 
-.main-action-btn{
-    display: flex;
-    align-items: center;
+.icons-common:hover{
+  background-color: var(--dark-theme-shade-80);
+  border-radius: 5px;
 }
+

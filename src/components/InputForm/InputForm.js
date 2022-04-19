@@ -1,19 +1,23 @@
-import {useNote} from "../../context/Note-Context"
-import { BsFillPinFill,BsTrash } from "react-icons/bs";
+import {v4 as uuid} from "uuid"
+import {useNote,useArchive} from "../../context"
+
+import { BsFillPinFill } from "react-icons/bs";
 import { IoIosColorPalette , IoIosAddCircleOutline} from "react-icons/io";
 import { BiArchiveIn } from "react-icons/bi";
+
 import "./inputForm.css"
 
 
 export const InputForm = () => {
     const {singleNote,setSingleNote,handleSubmit} = useNote()
+    const {addToArchive} = useArchive()
     return(
         <div className="input-form">
             <input 
                 className="input-field padding-xs" 
                 type="text" 
                 placeholder="Title"
-                onChange={(e)=>setSingleNote((prev) => ({...prev,title:e.target.value}))}
+                onChange={(e)=>setSingleNote((prev) => ({...prev,id:uuid(),title:e.target.value}))}
                 value={singleNote.title}
                 required
             />
@@ -30,9 +34,9 @@ export const InputForm = () => {
             >
             </textarea>
             <div className="action-container">
-            <div className="main-action-btn">
                 <IoIosAddCircleOutline title="add" className="icons-common margin-xs" onClick={handleSubmit}/>
                 <IoIosColorPalette title="bg-color" className="icons-common margin-xs"/>
+                <BiArchiveIn onClick={()=>addToArchive(singleNote)} title="archive" className="icons-common margin-xs"/>
                 <select 
                     title="labels"
                     value={singleNote.label}
@@ -47,13 +51,7 @@ export const InputForm = () => {
                     <option value="Exercise">Exercise</option>
                     <option value="Others">Others</option>
                 </select>
-                </div>
-                <div>
-                    <BiArchiveIn title="archive" className="icons-common margin-xs"/>
-                    <BsTrash title="trash" className="icons-common margin-xs"/>
-                </div>
             </div>
-            
         </div>
     )
 }

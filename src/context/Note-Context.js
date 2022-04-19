@@ -4,20 +4,28 @@ const NoteContext = createContext()
 
 const NoteProvider = ({children}) => {
   const [notes, setNotes] = useState([])
-  const [singleNote, setSingleNote] = useState({title:"",body:"",label:""})
+  const [singleNote, setSingleNote] = useState({id:"", title:"",body:"",label:""})
+
+
+  const deleteNote = (id) => {
+    setNotes(prev => prev.filter(Obj => Obj.id !== id))
+  }
+
 
   const handleSubmit = (e) => {
       e.preventDefault()
       setNotes(prev => [...prev,singleNote])
-      setSingleNote({title:"",body:"",label:""})
+      setSingleNote({id:"",title:"",body:"",label:""})
   } 
 
   useEffect(()=>{
     localStorage.setItem("mynotes",JSON.stringify(notes))   
   },[notes])
 
+
+
   return(
-      <NoteContext.Provider value={{singleNote,setSingleNote,handleSubmit}}>
+      <NoteContext.Provider value={{notes,singleNote,setSingleNote,handleSubmit,deleteNote}}>
           {children}
       </NoteContext.Provider>
   )
