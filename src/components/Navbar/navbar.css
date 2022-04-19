@@ -2,7 +2,6 @@
     grid-area: navbar;
     width: 15vw;
     margin: 5px 0;
-    border: 1px solid red;
 }
 
 .active-link{
