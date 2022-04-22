@@ -1,4 +1,4 @@
-import {Header, InputForm, NavBar,SingleNote} from "../../components"
+import {Header, InputForm, NavBar,SingleNote,Modal} from "../../components"
 import {useNote} from "../../context/Note-Context"
 import "../commonPage.css"
 import "./home.css"
@@ -20,6 +20,7 @@ export const Home = () => {
                   }
               </div>
              </div>
+             <Modal/>
          </main>
         </>
     )

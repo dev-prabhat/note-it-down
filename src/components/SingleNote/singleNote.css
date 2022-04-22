@@ -1,6 +1,6 @@
 .single-note{
     max-width: 30%;
-
+    overflow-wrap: break-word;
     box-shadow: 0 0 5px 1px var(--dark-theme-light-color);
     position: relative;
 }

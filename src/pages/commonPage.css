@@ -8,4 +8,5 @@
 
 .page-content{
     grid-area: page-content;
+    width: calc(100vw - 18vw);
 }
