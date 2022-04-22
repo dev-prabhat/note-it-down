@@ -5,11 +5,12 @@ const ArchiveContext = createContext()
 const ArchiveProvider = ({children}) => {
     const [archiveNotes, setArchiveNote] = useState([])
 
-    const addToArchive = (note) => setArchiveNote(prev => [...prev,note])
+    const addToArchive = (archiveNote) => setArchiveNote(prev => [...prev,archiveNote])
 
+    const deleteFromArchive = (archiveNote) => setArchiveNote(prev => prev.filter(Obj => Obj.id !== archiveNote.id))
     
     return(
-        <ArchiveContext.Provider value={{archiveNotes,addToArchive}}>
+        <ArchiveContext.Provider value={{archiveNotes,addToArchive,deleteFromArchive}}>
           {children}
         </ArchiveContext.Provider>
     )

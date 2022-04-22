@@ -15,6 +15,11 @@ export const SingleNote = ({note}) => {
         handleEdit(id)
     }
 
+    const handleArchive = (note) => {
+        deleteNote(note.id)
+        addToArchive(note)
+    }
+
     return(
         <div className="single-note margin-xs padding-xs">
             <h2 className="head-md">{title}</h2>
@@ -26,7 +31,7 @@ export const SingleNote = ({note}) => {
                 <p>Created on Date</p>
                 <div className="icon-container">
                     <BiEdit onClick={()=>clickEdit(id)} title="edit" className="icons-common margin-xs"/>
-                    <BiArchiveIn onClick={()=>addToArchive(note)} title="archive" className="icons-common margin-xs"/>
+                    <BiArchiveIn onClick={()=>handleArchive(note)} title="archive" className="icons-common margin-xs"/>
                     <BsTrash onClick={()=>deleteNote(id)} title="trash" className="icons-common margin-xs"/>
                 </div>
             </div>
