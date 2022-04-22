@@ -1,4 +1,4 @@
-import {useArchive,useNote} from "../../context"
+import {useArchive,useNote, useTrash} from "../../context"
 import { BsTrash } from "react-icons/bs";
 import { BiArchiveOut } from "react-icons/bi";
 
@@ -7,11 +7,18 @@ import "./archiveNote.css"
 export const ArchiveNote = ({archiveNote}) => {
     const {deleteFromArchive} = useArchive()
     const {addFromArchive} = useNote()
+    const {moveToTrash} = useTrash()
+
     const {title,body,label,priority} = archiveNote
 
     const handleArchiveOut = (archiveNote) => {
         deleteFromArchive(archiveNote)
         addFromArchive(archiveNote)
+    }
+
+    const handleTrash = (archiveNote) => {
+        deleteFromArchive(archiveNote)
+        moveToTrash(archiveNote)
     }
 
     return(
@@ -24,7 +31,7 @@ export const ArchiveNote = ({archiveNote}) => {
                 <p>Created on Date</p>
                 <div className="icon-container">
                     <BiArchiveOut onClick={()=>handleArchiveOut(archiveNote)} title="archive" className="icons-common margin-xs"/>
-                    <BsTrash onClick={()=>deleteFromArchive(archiveNote)} title="trash" className="icons-common margin-xs"/>
+                    <BsTrash onClick={()=>handleTrash(archiveNote)} title="trash" className="icons-common margin-xs"/>
                 </div>
             </div>
         </div>

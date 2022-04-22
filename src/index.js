@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import {BrowserRouter} from "react-router-dom"
 import App from "./App";
-import { ArchiveProvider,ModalProvider,NoteProvider } from "./context";
+import { ArchiveProvider,ModalProvider,NoteProvider, TrashProvider } from "./context";
 import { makeServer } from "./server";
 
 // Call make Server
@@ -14,7 +14,9 @@ ReactDOM.render(
      <NoteProvider>
       <ArchiveProvider>
         <ModalProvider>
-         <App />
+          <TrashProvider>
+           <App />
+         </TrashProvider>
         </ModalProvider>
       </ArchiveProvider>
      </NoteProvider>

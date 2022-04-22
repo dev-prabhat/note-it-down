@@ -4,6 +4,7 @@ import {InputForm} from "./InputForm/InputForm"
 import {SingleNote} from "./SingleNote/SingleNote"
 import {Modal} from "./Modal/Modal"
 import {ArchiveNote} from "./ArchiveNote/ArchiveNote"
+import {TrashNote} from "./TrashNote/TrashNote"
 
 
-export {NavBar,Header,InputForm,SingleNote,Modal,ArchiveNote}
+export {NavBar,Header,InputForm,SingleNote,Modal,ArchiveNote,TrashNote}
