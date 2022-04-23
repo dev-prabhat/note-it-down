@@ -1,4 +1,3 @@
-import {v4 as uuid} from "uuid"
 import React,{createContext,useContext,useState,useEffect} from "react"
 
 const NoteContext = createContext()
@@ -18,7 +17,7 @@ const NoteProvider = ({children}) => {
   }
 
   const handleSubmit = () => {
-      setNotes(prev => [...prev,{...singleNote,id:uuid()}])
+      setNotes(prev => [...prev,singleNote])
       setSingleNote({id:"",title:"",body:"",label:"",priority:""})
   } 
   
@@ -35,12 +34,15 @@ const NoteProvider = ({children}) => {
     setEditNote({id:"",title:"",body:"",label:"",priority:""})
   }
 
+  const addFromArchive = (archiveNote) => setNotes(prev => [...prev,archiveNote])  
+
+
   useEffect(()=>{
     localStorage.setItem("mynotes",JSON.stringify(notes))   
   },[notes])
 
   return(
-      <NoteContext.Provider value={{notes,singleNote,editNote,setSingleNote,handleSubmit,deleteNote,handleEdit,setEditNote,updateNote}}>
+      <NoteContext.Provider value={{notes,singleNote,editNote,setSingleNote,handleSubmit,deleteNote,handleEdit,setEditNote,updateNote,addFromArchive}}>
           {children}
       </NoteContext.Provider>
   )
