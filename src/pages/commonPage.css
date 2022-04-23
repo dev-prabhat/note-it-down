@@ -3,10 +3,9 @@
     grid-template-areas: 
     "header header header header header header header header header header header header"
     "navbar page-content page-content page-content page-content page-content page-content page-content page-content page-content page-content page-content";
-    grid-gap: 5px;
 }
 
 .page-content{
     grid-area: page-content;
-    width: calc(100vw - 18vw);
+    width: calc(100vw - 15vw);
 }

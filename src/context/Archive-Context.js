@@ -7,7 +7,7 @@ const ArchiveProvider = ({children}) => {
 
     const addToArchive = (archiveNote) => setArchiveNote(prev => [...prev,archiveNote])
 
-    const deleteFromArchive = (archiveNote) => setArchiveNote(prev => prev.filter(Obj => Obj.id !== archiveNote.id))
+    const deleteFromArchive = (archiveNote) => setArchiveNote(prev => prev.filter(archiveNoteObj => archiveNoteObj.id !== archiveNote.id))
     
     return(
         <ArchiveContext.Provider value={{archiveNotes,addToArchive,deleteFromArchive}}>

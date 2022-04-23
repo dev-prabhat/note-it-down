@@ -6,7 +6,6 @@
 
     padding: 5px;
     position: relative;
-    height: 30vh;
 
     box-shadow: 0 0 5px 1px var(--dark-theme-light-color);
 }
