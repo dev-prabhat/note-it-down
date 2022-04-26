@@ -1,49 +1,61 @@
-import {v4 as uuid} from "uuid"
 import React,{createContext,useContext,useState,useEffect} from "react"
+import { useAxios } from "../customHooks/useAxios"
+import { useAuth } from "./Auth-Context"
 
 const NoteContext = createContext()
 
 const NoteProvider = ({children}) => {
+  const {response,operation} = useAxios()
+  const {encodedToken} = useAuth()
   const [notes, setNotes] = useState([])
-  const [singleNote, setSingleNote] = useState({id:"", title:"",body:"",label:"",priority:""})
-  const [editNote,setEditNote] = useState({id:"",title:"",body:"",label:"",priority:""})
+  const [singleNote, setSingleNote] = useState({title:"",body:"",label:"",priority:""})
+  const [editNote,setEditNote] = useState({title:"",body:"",label:"",priority:""})
 
-  useEffect(()=>{
-    let items = JSON.parse(localStorage.getItem("mynotes"))
-    if(items.length !== 0) setNotes(items)
- },[])
-
-  const deleteNote = (id) => {
-    setNotes(prev => prev.filter(Obj => Obj.id !== id))
-  }
 
   const handleSubmit = () => {
-      setNotes(prev => [...prev,{...singleNote,id:uuid()}])
-      setSingleNote({id:"",title:"",body:"",label:"",priority:""})
+    operation({
+      method:"post",
+      url:"/api/notes",
+      headers:{"authorization": encodedToken},
+      data:{note:singleNote}
+    })
   } 
-  
-  const handleEdit = (id) => {
-    const Object = notes.find(Obj => Obj.id === id)
+
+  const deleteNote = (_id) => {
+    operation({
+      method:"delete",
+      url:`/api/notes/${_id}`,
+      headers:{"authorization": encodedToken},
+    })
+  }
+
+  const populateEditModal = (_id) => {
+    const Object = notes.find(Obj => Obj._id === _id)
     setEditNote(Object)
   } 
 
   const updateNote = (updatedNote) => {
-    setNotes(prevNotes => prevNotes.map(prevNote => {
-      if(prevNote.id === updatedNote.id) return updatedNote
-      return prevNote
-    }))
-    setEditNote({id:"",title:"",body:"",label:"",priority:""})
+    operation({
+      method:"post",
+      url:`/api/notes/${updatedNote._id}`,
+      headers:{"authorization": encodedToken},
+      data:{note:updatedNote}
+    })
+    setEditNote({title:"",body:"",label:"",priority:""})
   }
 
   const addFromArchive = (archiveNote) => setNotes(prev => [...prev,archiveNote])  
 
 
   useEffect(()=>{
-    localStorage.setItem("mynotes",JSON.stringify(notes))   
-  },[notes])
+    if(response !== undefined) {
+      setNotes(response.data.notes)
+    }
+  },[response])
+
 
   return(
-      <NoteContext.Provider value={{notes,singleNote,editNote,setSingleNote,handleSubmit,deleteNote,handleEdit,setEditNote,updateNote,addFromArchive}}>
+      <NoteContext.Provider value={{notes,singleNote,editNote,setSingleNote,handleSubmit,deleteNote,populateEditModal,setEditNote,updateNote,addFromArchive}}>
           {children}
       </NoteContext.Provider>
   )

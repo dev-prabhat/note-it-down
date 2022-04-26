@@ -1,4 +1,3 @@
-import { useLocation  } from "react-router-dom"
 import React,{createContext,useContext,useState,useEffect} from "react"
 import { useAxios } from "../customHooks/useAxios" 
 
@@ -6,7 +5,6 @@ const AuthContext = createContext()
 
 const AuthProvider = ({children}) => {
     const {response,operation} = useAxios()
-    const location = useLocation()
     const [loginData, setLoginData] = useState({email:"adarshbalika@gmail.com",password:"adarshBalika123"})
     const [encodedToken, setEncodedToken] = useState(null)    
 
