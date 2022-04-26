@@ -14,7 +14,7 @@ export const Trash = () => {
                  <div className="trash-notes">
                      {
                          trashNotes && trashNotes.map(trashNote => (
-                            <TrashNote key={trashNote.id} trashNote={trashNote}/>
+                            <TrashNote key={trashNote._id} trashNote={trashNote}/>
                          ))
                      }
                  </div>

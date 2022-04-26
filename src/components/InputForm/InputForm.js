@@ -8,7 +8,7 @@ import "./inputForm.css"
 
 
 export const InputForm = () => {
-    const {singleNote,setSingleNote,handleSubmit} = useNote()
+    const {singleNote,setSingleNote,addToNotes} = useNote()
     const {addToArchive} = useArchive()
     return(
         <div className="input-form">
@@ -33,7 +33,7 @@ export const InputForm = () => {
             >
             </textarea>
             <div className="action-container">
-                <IoIosAddCircleOutline title="add" className="icons-common margin-xs" onClick={handleSubmit}/>
+                <IoIosAddCircleOutline title="add" className="icons-common margin-xs" onClick={() =>addToNotes(singleNote)}/>
                 <IoIosColorPalette title="color" className="icons-common margin-xs"/>
                 <BiArchiveIn onClick={()=>addToArchive(singleNote)} title="archive" className="icons-common margin-xs"/>
                 <select 

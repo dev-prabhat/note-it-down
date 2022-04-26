@@ -12,7 +12,7 @@ const NoteProvider = ({children}) => {
   const [editNote,setEditNote] = useState({title:"",body:"",label:"",priority:""})
 
 
-  const handleSubmit = () => {
+  const addToNotes = (singleNote) => {
     operation({
       method:"post",
       url:"/api/notes",
@@ -44,9 +44,6 @@ const NoteProvider = ({children}) => {
     setEditNote({title:"",body:"",label:"",priority:""})
   }
 
-  const addFromArchive = (archiveNote) => setNotes(prev => [...prev,archiveNote])  
-
-
   useEffect(()=>{
     if(response !== undefined) {
       setNotes(response.data.notes)
@@ -55,7 +52,7 @@ const NoteProvider = ({children}) => {
 
 
   return(
-      <NoteContext.Provider value={{notes,singleNote,editNote,setSingleNote,handleSubmit,deleteNote,populateEditModal,setEditNote,updateNote,addFromArchive}}>
+      <NoteContext.Provider value={{notes,singleNote,editNote,setNotes,setSingleNote,addToNotes,deleteNote,populateEditModal,setEditNote,updateNote}}>
           {children}
       </NoteContext.Provider>
   )

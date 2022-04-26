@@ -17,14 +17,9 @@ export const SingleNote = ({note}) => {
         populateEditModal(_id)
     }
 
-    const handleArchiveIn = (note) => {
-        deleteNote(note._id)
-        addToArchive(note)
-    }
-
     const trashHandler = (note) => {
         deleteNote(note._id)
-        // moveToTrash(note)
+        moveToTrash(note)
     }
 
     return(
@@ -38,7 +33,7 @@ export const SingleNote = ({note}) => {
                 <p>Created on Date</p>
                 <div className="icon-container">
                     <BiEdit onClick={()=>clickEdit(_id)} title="edit" className="icons-common margin-xs"/>
-                    <BiArchiveIn onClick={()=>handleArchiveIn(note)} title="archive" className="icons-common margin-xs"/>
+                    <BiArchiveIn onClick={()=>addToArchive(note)} title="archive" className="icons-common margin-xs"/>
                     <BsTrash onClick={()=>trashHandler(note)} title="trash" className="icons-common margin-xs"/>
                 </div>
             </div>

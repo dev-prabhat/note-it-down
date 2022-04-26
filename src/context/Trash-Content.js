@@ -7,7 +7,7 @@ const TrashProvider = ({children}) => {
 
     const moveToTrash = (trashNote) =>  setTrashNote(prev => [...prev,trashNote])
 
-    const deleteFromTrash = (trashNote) => setTrashNote(prev => prev.filter(trashNoteObj => trashNoteObj.id !== trashNote.id))
+    const deleteFromTrash = (trashNoteId) => setTrashNote(prev => prev.filter(trashNoteObj => trashNoteObj._id !== trashNoteId))
 
     return(
         <TrashContext.Provider value={{trashNotes,moveToTrash,deleteFromTrash}}>
