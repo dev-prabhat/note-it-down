@@ -1,3 +1,4 @@
+import {v4 as uuid} from "uuid"
 import React,{createContext,useContext,useState,useEffect} from "react"
 
 const NoteContext = createContext()
@@ -17,7 +18,7 @@ const NoteProvider = ({children}) => {
   }
 
   const handleSubmit = () => {
-      setNotes(prev => [...prev,singleNote])
+      setNotes(prev => [...prev,{...singleNote,id:uuid()}])
       setSingleNote({id:"",title:"",body:"",label:"",priority:""})
   } 
   

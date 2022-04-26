@@ -1,4 +1,3 @@
-import {v4 as uuid} from "uuid"
 import {useNote,useArchive} from "../../context"
 
 import { BsFillPinFill } from "react-icons/bs";
@@ -17,7 +16,7 @@ export const InputForm = () => {
                 className="input-field padding-xs" 
                 type="text" 
                 placeholder="Title"
-                onChange={(e)=>setSingleNote((prev) => ({...prev,id:uuid(),title:e.target.value}))}
+                onChange={(e)=>setSingleNote((prev) => ({...prev,title:e.target.value}))}
                 value={singleNote.title}
                 required
             />

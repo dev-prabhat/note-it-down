@@ -1,29 +1,43 @@
-import axios from "axios"
-import React,{createContext,useContext,useState} from "react"
+import { useLocation  } from "react-router-dom"
+import React,{createContext,useContext,useState,useEffect} from "react"
+import { useAxios } from "../customHooks/useAxios" 
 
 const AuthContext = createContext()
 
 const AuthProvider = ({children}) => {
+    const {response,operation} = useAxios()
+    const location = useLocation()
     const [loginData, setLoginData] = useState({email:"adarshbalika@gmail.com",password:"adarshBalika123"})
-    
+    const [encodedToken, setEncodedToken] = useState(null)    
 
-    const handleLogin = async (e) => {
+    useEffect(()=>{
+       let localToken = localStorage.getItem("encodedToken")
+       if(localToken !== null){
+           setEncodedToken(localToken)
+       }
+    },[])
+
+    const handleLogin = (e) => {
         e.preventDefault()
-        try {
-            const response = await axios.post("/api/auth/login",{
-                email:loginData.email,
-                password:loginData.password
-            })
-            console.log(response)
-        } catch (error) {
-            console.log(error)
-        }
-        setLoginData({email:"",password:""})
+        operation({
+            method:"post",
+            url:"/api/auth/login",
+            data :{email:loginData.email,password:loginData.password}
+        })
     }
 
+    useEffect(()=>{
+        if(response !== undefined){
+            localStorage.setItem("encodedToken",response.data.encodedToken)
+            setEncodedToken(response.data.encodedToken)
+            setLoginData({email:"",password:""})
+        }
+    },[response])
+
+        
 
     return(
-        <AuthContext.Provider value={{loginData,setLoginData,handleLogin}}>
+        <AuthContext.Provider value={{encodedToken,loginData,setLoginData,handleLogin}}>
           {children}
         </AuthContext.Provider>
     )

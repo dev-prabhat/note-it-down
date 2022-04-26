@@ -15,7 +15,7 @@ export const Login = () => {
            </figure>
           <form className="login-form border-radius-xs" onSubmit={handleLogin}>
             <h1 className="head-md text-center text-gray padding-xs margin-xs">Welcome to NoteIt-<span className="highlight">Down</span></h1>
-            <label class="form-label">Email Address:</label>
+            <label className="form-label">Email Address:</label>
               <input
                 type="email"
                 className="form-field border-radius-xs padding-xs"
@@ -26,7 +26,7 @@ export const Login = () => {
               />
                
               <div className="form-field-container">
-              <label class="form-label">Password: </label>
+              <label className="form-label">Password: </label>
                 <input
                   type={showPassword ? "text" :"password"}
                   className="form-field border-radius-xs padding-xs"

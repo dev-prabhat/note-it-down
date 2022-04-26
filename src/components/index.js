@@ -5,6 +5,8 @@ import {SingleNote} from "./SingleNote/SingleNote"
 import {Modal} from "./Modal/Modal"
 import {ArchiveNote} from "./ArchiveNote/ArchiveNote"
 import {TrashNote} from "./TrashNote/TrashNote"
+import {PrivateRoute} from "./PrivateRoute"
+import {AuthRoute} from "./AuthRoute"
 
 
-export {NavBar,Header,InputForm,SingleNote,Modal,ArchiveNote,TrashNote}
+export {NavBar,Header,InputForm,SingleNote,Modal,ArchiveNote,TrashNote,PrivateRoute,AuthRoute}
