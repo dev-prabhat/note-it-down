@@ -5,7 +5,7 @@ const AuthContext = createContext()
 
 const AuthProvider = ({children}) => {
     const {response,operation} = useAxios()
-    const [loginData, setLoginData] = useState({email:"adarshbalika@gmail.com",password:"adarshBalika123"})
+    const [loginData, setLoginData] = useState({email:"",password:""})
     const [encodedToken, setEncodedToken] = useState(null)    
 
     useEffect(()=>{
@@ -24,6 +24,11 @@ const AuthProvider = ({children}) => {
         })
     }
 
+    const handleLogout = () => {
+        localStorage.removeItem("encodedToken")
+        setEncodedToken(null)
+    }
+
     useEffect(()=>{
         if(response !== undefined){
             localStorage.setItem("encodedToken",response.data.encodedToken)
@@ -35,7 +40,7 @@ const AuthProvider = ({children}) => {
         
 
     return(
-        <AuthContext.Provider value={{encodedToken,loginData,setLoginData,handleLogin}}>
+        <AuthContext.Provider value={{encodedToken,loginData,setLoginData,handleLogin,handleLogout}}>
           {children}
         </AuthContext.Provider>
     )

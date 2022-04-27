@@ -11,7 +11,7 @@ export const Login = () => {
       <>
          <main className="d-flex login-page"> 
            <figure className="img-wrapper">
-              <img className="img-responsive" src={process.env.PUBLIC_URL + "/svg/Add notes-bro.svg"} alt="notes_bro"/>
+              <img className="img-responsive" src={`${process.env.PUBLIC_URL}/svg/Add notes-bro.svg`} alt="notes_bro"/>
            </figure>
           <form className="login-form border-radius-xs" onSubmit={handleLogin}>
             <h1 className="head-md text-center text-gray padding-xs margin-xs">Welcome to NoteIt-<span className="highlight">Down</span></h1>
@@ -41,8 +41,17 @@ export const Login = () => {
                   <BiHide className="show-hide-icon" onClick={()=>setShowPassord(prev =>!prev)}/>
                 }
               </div>
-
-              <button className="btn btn-primary border-radius-xs text-sm d-100">Guest Login</button>
+                <div className="other-option-container margin-xs">
+                   <div>
+                      <input type="checkbox" id="remember-me" required/>
+                      <label htmlFor="remember-me" className="text-gray padding-xs">Remember me</label>
+                   </div>
+                    <p className="test-credential padding-xs" 
+                      onClick={()=>setLoginData({email:"adarshbalika@gmail.com",password:"adarshBalika123"})}>
+                      Use Test Credential
+                    </p>
+                </div>
+              <button className="btn btn-primary border-radius-xs text-sm d-100"> Login</button>
           </form>
          </main>
       </>

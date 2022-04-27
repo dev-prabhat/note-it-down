@@ -28,3 +28,14 @@
     right: 5px;
     cursor: pointer;
 }
+
+.other-option-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.test-credential{
+    color: var(--primary-theme-color);
+    cursor: pointer;
+}

@@ -8,9 +8,9 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<LandingPage/>}/>
-        <Route path="/home" element={<Home/>}/>
         
         <Route element={<PrivateRoute/>}>
+          <Route path="/home" element={<Home/>}/>
           <Route path="/archive" element={<Archive/>}/>
           <Route path="/labels" element={<Labels/>}/>
           <Route path="/trash" element={<Trash/>}/>
