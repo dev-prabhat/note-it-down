@@ -31,7 +31,6 @@ const AuthProvider = ({children}) => {
 
     useEffect(()=>{
         if(response !== undefined){
-            console.log(response)
             localStorage.setItem("encodedToken",response.data.encodedToken)
             setEncodedToken(response.data.encodedToken)
             setLoginData({email:"",password:""})
