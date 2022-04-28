@@ -1,7 +1,11 @@
-import "./landingpage.css"
 import {NavLink} from "react-router-dom"
+import {useAuth} from "../../context/index"
+
+import "./landingpage.css"
+
 
 export const LandingPage = () => {
+    const {encodedToken} = useAuth()
     return(
         <>
            <main className="landing-page-container">
@@ -13,14 +17,24 @@ export const LandingPage = () => {
                         </p>
                    </div> 
                    <div className="action-buttons">
-                    <NavLink to="/signup" className="btn btn-primary btn-link head-sm margin-sm">Register Now</NavLink>
-                    <NavLink to="/home" className="btn btn-link margin-sm">Go to Notes</NavLink>
-                    <NavLink to="/login" className="head-sm btn-link d-block padding-sm">Already have an account</NavLink>
+                       {
+                          encodedToken ? ( <NavLink to="/home" className="btn btn-link margin-sm border-radius-xs">Go to Notes</NavLink>) 
+                          : (
+                              <ul className="styled-list">
+                                <li className="list-style-inline">
+                                  <NavLink to="/signup" className="btn btn-primary btn-link head-sm border-radius-xs">SignUp</NavLink>
+                                </li>
+                                <li className="list-style-inline">
+                                  <NavLink to="/login" className="btn-link head-sm">Login</NavLink>
+                                </li>
+                            </ul>
+                          )
+                       }
                    </div>
                </section>
                <section className="hero-image">
                    <figure className="img-container">
-                       <img className="img-responsive" src={process.env.PUBLIC_URL + "/svg/logo.svg"} alt="landing_page_image"/>
+                       <img className="img-responsive" src={`${process.env.PUBLIC_URL}/svg/logo.svg`} alt="landing_page_image"/>
                    </figure>
                </section>
            </main>

@@ -6,24 +6,19 @@ import "./singleNote.css"
 
 export const SingleNote = ({note}) => {
     const {setShowModal} = useModal()
-    const {deleteNote,handleEdit} = useNote()
+    const {deleteNote,populateEditModal} = useNote()
     const {addToArchive} = useArchive()
     const {moveToTrash} = useTrash()
 
-    const {title,body,label,id,priority} = note
+    const {title,body,label,_id,priority} = note
 
-    const clickEdit = (id) => {
+    const clickEdit = (_id) => {
         setShowModal(prev => !prev)
-        handleEdit(id)
-    }
-
-    const handleArchiveIn = (note) => {
-        deleteNote(note.id)
-        addToArchive(note)
+        populateEditModal(_id)
     }
 
     const trashHandler = (note) => {
-        deleteNote(note.id)
+        deleteNote(note._id)
         moveToTrash(note)
     }
 
@@ -37,8 +32,8 @@ export const SingleNote = ({note}) => {
             <div className="option-container">
                 <p>Created on Date</p>
                 <div className="icon-container">
-                    <BiEdit onClick={()=>clickEdit(id)} title="edit" className="icons-common margin-xs"/>
-                    <BiArchiveIn onClick={()=>handleArchiveIn(note)} title="archive" className="icons-common margin-xs"/>
+                    <BiEdit onClick={()=>clickEdit(_id)} title="edit" className="icons-common margin-xs"/>
+                    <BiArchiveIn onClick={()=>addToArchive(note)} title="archive" className="icons-common margin-xs"/>
                     <BsTrash onClick={()=>trashHandler(note)} title="trash" className="icons-common margin-xs"/>
                 </div>
             </div>

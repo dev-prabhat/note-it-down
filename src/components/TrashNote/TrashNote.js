@@ -1,18 +1,17 @@
-import {useArchive,useTrash} from "../../context"
-
+import {useTrash,useNote} from "../../context"
 import { MdRestore } from "react-icons/md";
 import { BsTrash } from "react-icons/bs";
 import "./trashNote.css"
 
 export const TrashNote = ({trashNote}) => {
-    const {addToArchive} = useArchive()
     const {deleteFromTrash} = useTrash()
+    const {addToNotes} = useNote()
 
     const {title,body,label,priority} = trashNote
-
+    
     const restoreHandler = (trashNote) => {
-        addToArchive(trashNote)
-        deleteFromTrash(trashNote)
+        addToNotes(trashNote)
+        deleteFromTrash(trashNote._id)
     }
 
     return(
@@ -25,7 +24,7 @@ export const TrashNote = ({trashNote}) => {
                 <p>Created on Date</p>
                 <div className="icon-container">
                     <MdRestore onClick={()=>restoreHandler(trashNote)} title="archive" className="icons-common margin-xs"/>
-                    <BsTrash onClick={()=>deleteFromTrash(trashNote)} title="trash" className="icons-common margin-xs"/>
+                    <BsTrash onClick={()=>deleteFromTrash(trashNote._id)} title="trash" className="icons-common margin-xs"/>
                 </div>
             </div>
         </div>

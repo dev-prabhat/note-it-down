@@ -15,7 +15,7 @@ export const Archive = () => {
                  <div className="archive-notes">
                      {
                          archiveNotes && archiveNotes.map(archiveNote => (
-                            <ArchiveNote key={archiveNote.id} archiveNote={archiveNote}/>
+                            <ArchiveNote key={archiveNote._id} archiveNote={archiveNote}/>
                          ))
                      }
                  </div>

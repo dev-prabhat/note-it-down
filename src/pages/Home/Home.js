@@ -15,7 +15,7 @@ export const Home = () => {
               <div className="all-notes padding-xs">
                   {
                       notes.map(note => (
-                          <SingleNote key={note.id} note={note}/>
+                          <SingleNote key={note._id} note={note}/>
                       ))
                   }
               </div>

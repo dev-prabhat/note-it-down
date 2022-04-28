@@ -1,0 +1,41 @@
+.login-page{
+    height: 100vh;
+    flex-wrap: wrap;
+}
+
+.img-wrapper{
+    width: 45%;
+    margin: 5px auto;
+}
+
+.login-form{
+    padding: 1.5rem;
+    width: 40%;
+    margin: 5px auto;
+
+    box-shadow: 1px 1px 1px 1px var(--dark-theme-shade-60);
+    border-top: 5px solid var(--primary-theme-color);
+}
+
+.form-field-container{
+    position: relative;
+}
+
+.show-hide-icon{
+    font-size: 1.5rem;
+    position: absolute;
+    bottom: 15px;
+    right: 5px;
+    cursor: pointer;
+}
+
+.other-option-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.test-credential{
+    color: var(--primary-theme-color);
+    cursor: pointer;
+}

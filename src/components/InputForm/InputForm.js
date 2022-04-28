@@ -1,4 +1,3 @@
-import {v4 as uuid} from "uuid"
 import {useNote,useArchive} from "../../context"
 
 import { BsFillPinFill } from "react-icons/bs";
@@ -9,7 +8,7 @@ import "./inputForm.css"
 
 
 export const InputForm = () => {
-    const {singleNote,setSingleNote,handleSubmit} = useNote()
+    const {singleNote,setSingleNote,addToNotes} = useNote()
     const {addToArchive} = useArchive()
     return(
         <div className="input-form">
@@ -17,7 +16,7 @@ export const InputForm = () => {
                 className="input-field padding-xs" 
                 type="text" 
                 placeholder="Title"
-                onChange={(e)=>setSingleNote((prev) => ({...prev,id:uuid(),title:e.target.value}))}
+                onChange={(e)=>setSingleNote((prev) => ({...prev,title:e.target.value}))}
                 value={singleNote.title}
                 required
             />
@@ -34,7 +33,7 @@ export const InputForm = () => {
             >
             </textarea>
             <div className="action-container">
-                <IoIosAddCircleOutline title="add" className="icons-common margin-xs" onClick={handleSubmit}/>
+                <IoIosAddCircleOutline title="add" className="icons-common margin-xs" onClick={() =>addToNotes(singleNote)}/>
                 <IoIosColorPalette title="color" className="icons-common margin-xs"/>
                 <BiArchiveIn onClick={()=>addToArchive(singleNote)} title="archive" className="icons-common margin-xs"/>
                 <select 
