@@ -1,10 +1,12 @@
 import { Header, NavBar,SingleNote} from "../../components/index"
 import {useArchive} from "../../context"
+import useDocument from "../../customHooks/useDocument"
 import "../commonPage.css"
 import "./archive.css"
 
 
 export const Archive = () => {
+    useDocument("| Archive")
     const {archiveNotes} = useArchive()
     return(
         <>

@@ -3,8 +3,10 @@ import {useAuth} from "../../context"
 
 import { BiShow,BiHide } from "react-icons/bi";
 import "./login.css"
+import useDocument from "../../customHooks/useDocument";
 
 export const Login = () => {
+  useDocument("| Login")
   const [showPassword, setShowPassord] = useState(false)
   const {loginData, setLoginData,handleLogin} = useAuth()
     return(

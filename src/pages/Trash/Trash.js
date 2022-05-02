@@ -1,9 +1,11 @@
 import { Header, NavBar, SingleNote} from "../../components/index"
 import {useTrash} from "../../context"
+import useDocument from "../../customHooks/useDocument"
 import "../commonPage.css"
 import "./trash.css"
 
 export const Trash = () => {
+    useDocument("| Trash")
     const {trashNotes} = useTrash()
     return(
         <>

@@ -1,10 +1,12 @@
 import {NavLink} from "react-router-dom"
 import {useAuth} from "../../context/index"
+import useDocument from "../../customHooks/useDocument"
 
 import "./landingpage.css"
 
 
 export const LandingPage = () => {
+    useDocument("")
     const {encodedToken} = useAuth()
     return(
         <>

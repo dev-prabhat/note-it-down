@@ -1,10 +1,14 @@
 import { MdCreate } from "react-icons/md";
 import {Header, InputForm, NavBar,SingleNote,Modal,EditForm} from "../../components"
 import {useNote,useModal} from "../../context"
+import useDocument from "../../customHooks/useDocument";
+   
 import "../commonPage.css"
 import "./home.css"
 
 export const Home = () => {
+    useDocument("| Home")
+
     const {notes} = useNote()
     const {isInputModal,setInputModal,isEditModal,setEditModal} = useModal()
     return(
