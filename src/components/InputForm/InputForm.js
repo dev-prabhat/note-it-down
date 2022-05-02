@@ -1,15 +1,18 @@
-import {useNote,useArchive} from "../../context"
+import {useNote} from "../../context"
+import { RichTextEditor } from "../RichTextEditor/RichTextEditor";
 
-import { BsFillPinFill } from "react-icons/bs";
 import { IoIosColorPalette , IoIosAddCircleOutline} from "react-icons/io";
-import { BiArchiveIn } from "react-icons/bi";
-
 import "./inputForm.css"
 
 
-export const InputForm = () => {
+export const InputForm = ({setInputModal}) => {
     const {singleNote,setSingleNote,addToNotes} = useNote()
-    const {addToArchive} = useArchive()
+    
+    const handleNote = () => {
+        setInputModal(prev => !prev)
+        addToNotes(singleNote)
+    }
+
     return(
         <div className="input-form">
             <input 
@@ -20,22 +23,10 @@ export const InputForm = () => {
                 value={singleNote.title}
                 required
             />
-            <BsFillPinFill title="pin" className="pin-Icon icons-common "/>
-            <textarea 
-                className="input-field padding-xs" 
-                placeholder="write here..." 
-                type="text" 
-                rows="5" 
-                cols="20"
-                onChange={(e)=>setSingleNote((prev) => ({...prev,body:e.target.value}))}
-                value={singleNote.body}
-                required
-            >
-            </textarea>
+            <RichTextEditor setRichTextEditor={setSingleNote} richTextContent={singleNote}/>
             <div className="action-container">
-                <IoIosAddCircleOutline title="add" className="icons-common margin-xs" onClick={() =>addToNotes(singleNote)}/>
+                <IoIosAddCircleOutline title="add" className="icons-common margin-xs" onClick={() =>handleNote(singleNote)}/>
                 <IoIosColorPalette title="color" className="icons-common margin-xs"/>
-                <BiArchiveIn onClick={()=>addToArchive(singleNote)} title="archive" className="icons-common margin-xs"/>
                 <select 
                     title="labels"
                     value={singleNote.label}

@@ -1,3 +1,4 @@
+import DOMPurify from "dompurify";
 import {useTrash,useNote} from "../../context"
 import { MdRestore } from "react-icons/md";
 import { BsTrash } from "react-icons/bs";
@@ -17,7 +18,7 @@ export const TrashNote = ({trashNote}) => {
     return(
         <div className="trash-note margin-xs padding-xs">
             <h2 className="head-md">{title}</h2>
-            <p className="text-sm">{body}</p>
+            <div className="text-sm padding-sm" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(body) }}></div>
             <p className="text-sm font-weight-semibold tag">#{label}</p>
             <p className="text-sm font-weight-semibold">{priority}</p>
             <div className="option-container">

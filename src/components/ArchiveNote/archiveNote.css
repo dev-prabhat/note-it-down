@@ -1,5 +1,5 @@
 .archive-note{
-    max-width: 30%;
+    width: 40%;
     overflow-wrap: break-word;
     box-shadow: 0 0 5px 1px var(--dark-theme-light-color);
     position: relative;

@@ -3,10 +3,12 @@ import React,{createContext,useContext,useState} from "react"
 const ModalContext = createContext()
 
 const ModalProvider = ({children}) => {
-    const [showModal, setShowModal] = useState(false)
+    const [isInputModal, setInputModal] = useState(false)
+    const [isEditModal, setEditModal] = useState(false)
+
 
     return(
-        <ModalContext.Provider value={{showModal,setShowModal}}>
+        <ModalContext.Provider value={{isInputModal,setInputModal,isEditModal,setEditModal}}>
             {children}
         </ModalContext.Provider>
     )

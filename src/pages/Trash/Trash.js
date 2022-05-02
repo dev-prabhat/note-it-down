@@ -10,7 +10,7 @@ export const Trash = () => {
          <main className="main-page">
            <Header/>
            <NavBar/>
-           <div className="page-content">
+           <div className="page-content padding-xs">
                  <div className="trash-notes">
                      {
                          trashNotes && trashNotes.map(trashNote => (

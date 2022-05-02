@@ -1,3 +1,4 @@
+import DOMPurify from "dompurify";
 import {useArchive,useTrash} from "../../context"
 import { BsTrash } from "react-icons/bs";
 import { BiArchiveOut } from "react-icons/bi";
@@ -18,7 +19,7 @@ export const ArchiveNote = ({archiveNote}) => {
     return(
         <div className="archive-note margin-xs padding-xs">
             <h2 className="head-md">{title}</h2>
-            <p className="text-sm">{body}</p>
+            <div className="text-sm padding-sm" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(body) }}></div>
             <p className="text-sm font-weight-semibold tag">#{label}</p>
             <p className="text-sm font-weight-semibold">{priority}</p>
             <div className="option-container">

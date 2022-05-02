@@ -7,5 +7,7 @@
 
 .page-content{
     grid-area: page-content;
+    height: 90vh;
     width: calc(100vw - 15vw);
+    position: relative;
 }

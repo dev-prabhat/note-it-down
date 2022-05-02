@@ -11,7 +11,7 @@ export const Archive = () => {
          <main className="main-page">
             <Header/>
             <NavBar/>
-             <div className="page-content">
+             <div className="page-content padding-xs">
                  <div className="archive-notes">
                      {
                          archiveNotes && archiveNotes.map(archiveNote => (

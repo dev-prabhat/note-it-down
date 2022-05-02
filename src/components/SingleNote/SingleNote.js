@@ -1,11 +1,11 @@
-import {useNote,useArchive,useModal,useTrash} from "../../context"
+import DOMPurify from "dompurify";
+import {useNote,useArchive,useTrash} from "../../context"
 import { BsFillPinFill,BsTrash } from "react-icons/bs";
 import { BiArchiveIn, BiEdit } from "react-icons/bi";
 
 import "./singleNote.css"
 
-export const SingleNote = ({note}) => {
-    const {setShowModal} = useModal()
+export const SingleNote = ({note,setEditModal}) => {
     const {deleteNote,populateEditModal} = useNote()
     const {addToArchive} = useArchive()
     const {moveToTrash} = useTrash()
@@ -13,7 +13,7 @@ export const SingleNote = ({note}) => {
     const {title,body,label,_id,priority} = note
 
     const clickEdit = (_id) => {
-        setShowModal(prev => !prev)
+        setEditModal(isEditModal => !isEditModal)
         populateEditModal(_id)
     }
 
@@ -25,7 +25,7 @@ export const SingleNote = ({note}) => {
     return(
         <div className="single-note margin-xs padding-xs">
             <h2 className="head-md">{title}</h2>
-            <p className="text-sm">{body}</p>
+            <div className="text-sm padding-sm" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(body) }}></div>
             <p className="text-sm font-weight-semibold tag">#{label}</p>
             <p className="text-sm font-weight-semibold">{priority}</p>
             <BsFillPinFill title="pin" className="pin-Icon icons-common "/>

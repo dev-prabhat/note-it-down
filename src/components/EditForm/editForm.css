@@ -1,0 +1,11 @@
+.edit-form{
+    padding: 5px;
+    position: relative;
+    box-shadow: 0 0 5px 1px var(--dark-theme-light-color);
+  }
+
+.close-Icon{
+    position: absolute;
+    top:5px;
+    right:2px;
+}

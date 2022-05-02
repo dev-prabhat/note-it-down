@@ -47,6 +47,7 @@ const NoteProvider = ({children}) => {
   useEffect(()=>{
     if(response !== undefined) {
       setNotes(response.data.notes)
+      setSingleNote({title:"",body:"",label:"",priority:""})
     }
   },[response])
 

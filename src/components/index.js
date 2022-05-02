@@ -7,6 +7,8 @@ import {ArchiveNote} from "./ArchiveNote/ArchiveNote"
 import {TrashNote} from "./TrashNote/TrashNote"
 import {PrivateRoute} from "./PrivateRoute"
 import {AuthRoute} from "./AuthRoute"
+import { EditForm } from "./EditForm/EditForm"
+import { RichTextEditor } from "./RichTextEditor/RichTextEditor"
 
 
-export {NavBar,Header,InputForm,SingleNote,Modal,ArchiveNote,TrashNote,PrivateRoute,AuthRoute}
+export {NavBar,Header,InputForm,SingleNote,Modal,ArchiveNote,TrashNote,PrivateRoute,AuthRoute,EditForm,RichTextEditor}
