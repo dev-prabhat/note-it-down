@@ -1,4 +1,4 @@
-import { Header, NavBar,ArchiveNote} from "../../components/index"
+import { Header, NavBar,SingleNote} from "../../components/index"
 import {useArchive} from "../../context"
 import "../commonPage.css"
 import "./archive.css"
@@ -15,7 +15,7 @@ export const Archive = () => {
                  <div className="archive-notes">
                      {
                          archiveNotes && archiveNotes.map(archiveNote => (
-                            <ArchiveNote key={archiveNote._id} archiveNote={archiveNote}/>
+                            <SingleNote key={archiveNote._id} note={archiveNote} isArchivePage={true}/>
                          ))
                      }
                  </div>

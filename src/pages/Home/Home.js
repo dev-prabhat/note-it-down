@@ -19,7 +19,7 @@ export const Home = () => {
               <div className="all-notes">
                   {
                       notes.map(note => (
-                          <SingleNote key={note._id} note={note} setEditModal={setEditModal}/>
+                          <SingleNote key={note._id} note={note} setEditModal={setEditModal} isHomePage={true}/>
                       ))
                   }
               </div> 
