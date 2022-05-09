@@ -1,25 +1,12 @@
 .input-form{
-    grid-area: inputForm;
-
-    width: 50%;
-    margin: 10px auto;
-
     padding: 5px;
-    position: relative;
-
     box-shadow: 0 0 5px 1px var(--dark-theme-light-color);
 }
 
 .input-field{
     border:none;
-    width: 95%;
+    width: 100%;
     resize: none;
-}
-
-.pin-Icon{
-    position: absolute;
-    top:5px;
-    right:2px;
 }
 
 .action-container{

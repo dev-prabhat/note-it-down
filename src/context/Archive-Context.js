@@ -47,7 +47,6 @@ const ArchiveProvider = ({children}) => {
     useEffect(()=>{
       if(response !== undefined){
         const {archives,notes} = response.data
-        console.log(response)
         setArchiveNote(archives)
         setNotes(notes)
       }
