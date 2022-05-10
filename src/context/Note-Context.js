@@ -8,8 +8,8 @@ const NoteProvider = ({children}) => {
   const {response,operation} = useAxios()
   const {encodedToken} = useAuth()
   const [notes, setNotes] = useState([])
-  const [singleNote, setSingleNote] = useState({title:"",body:"",label:"",priority:""})
-  const [editNote,setEditNote] = useState({title:"",body:"",label:"",priority:""})
+  const [singleNote, setSingleNote] = useState({title:"",body:"",label:"",priority:"",color:""})
+  const [editNote,setEditNote] = useState({title:"",body:"",label:"",priority:"",color:""})
 
 
   const addToNotes = (singleNote) => {

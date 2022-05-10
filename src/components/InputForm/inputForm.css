@@ -1,6 +1,7 @@
 .input-form{
     padding: 5px;
     box-shadow: 0 0 5px 1px var(--dark-theme-light-color);
+    position: relative;
 }
 
 .input-field{

@@ -10,7 +10,7 @@ export const SingleNote = ({note, setEditModal, isHomePage = false, isTrashPage 
     const {addToArchive,deleteFromArchive,restoreFromArchive} = useArchive()
     const {moveToTrash,deleteFromTrash} = useTrash()
 
-    const {title,body,label,_id,priority} = note
+    const {title,body,label,_id,priority,color} = note
 
     const restoreHandler = (note) => {
         addToNotes(note)
@@ -33,7 +33,7 @@ export const SingleNote = ({note, setEditModal, isHomePage = false, isTrashPage 
     }
 
     return(
-        <div className="single-note margin-xs padding-xs">
+        <div className="single-note margin-xs padding-xs" style={{backgroundColor:color}}>
             <h2 className="head-md">{title}</h2>
             <div className="text-sm padding-sm" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(body) }}></div>
             <p className="text-sm font-weight-semibold tag">#{label}</p>

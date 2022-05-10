@@ -1,4 +1,4 @@
-import React from "react"
+import React,{useState} from "react"
 import {useNote} from "../../context"
 
 import { AiOutlineClose } from "react-icons/ai";
@@ -6,9 +6,12 @@ import { IoIosColorPalette } from "react-icons/io";
 import { MdUpdate } from "react-icons/md";
 import "./editForm.css"
 import { RichTextEditor } from "../RichTextEditor/RichTextEditor";
+import { ColorPalette } from "../ColorPalette/ColorPalette";
+
 
 export const EditForm = ({setEditModal}) => {
     const {editNote,setEditNote,updateNote} = useNote()
+    const [isColorPalette,setIsColorPalette] = useState(false)
 
     const handleUpdate = (editNote) => {
         setEditModal(prev => !prev)
@@ -16,7 +19,7 @@ export const EditForm = ({setEditModal}) => {
     }
     return(
         <>
-            <div className="edit-form">
+            <div className="edit-form" style={{backgroundColor:editNote.color}}>
                 <input 
                     className="input-field padding-xs" 
                     type="text" 
@@ -29,7 +32,8 @@ export const EditForm = ({setEditModal}) => {
                 <RichTextEditor className="padding-xs" setRichTextEditor={setEditNote} richTextContent={editNote}/>
                 <div className="action-container">
                     <MdUpdate title="update" className="icons-common margin-xs" onClick={()=>handleUpdate(editNote)}/>
-                    <IoIosColorPalette title="bg-color" className="icons-common margin-xs"/>
+                    <IoIosColorPalette title="bg-color" className="icons-common margin-xs" onClick={()=>setIsColorPalette(prev => !prev)}/>
+                    <ColorPalette setIsColorPalette={setIsColorPalette} isColorPalette={isColorPalette} setBgColor={setEditNote}/>
                     <select 
                         title="labels"
                         value={editNote.label}

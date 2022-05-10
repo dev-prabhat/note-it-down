@@ -1,0 +1,42 @@
+.color-palette-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 20%;
+    background-color: var(--light-color);
+    position: absolute;
+    bottom: 15%;
+    left: 11%;
+}
+
+.color-palette-container > div{
+    width: 3vh;
+    height: 3vh;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.bg-red{
+    background-color: var(--danger-light-color);
+}
+
+.bg-blue{
+    background-color: var(--primary-light-color);
+}
+
+.bg-purple{
+    background-color: var(--secondary-light-color);
+}
+
+.bg-green{
+    background-color: var(--success-light-color);
+}
+
+.bg-yellow{
+    background-color: var(--warning-light-color);
+}
+
+.bg-gray{
+    background-color: var(--dark-theme-shade-60);
+}
