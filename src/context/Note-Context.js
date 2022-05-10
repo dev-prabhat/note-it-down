@@ -5,10 +5,19 @@ import { useAuth } from "./Auth-Context"
 const NoteContext = createContext()
 
 const NoteProvider = ({children}) => {
+  const data = new Date().toDateString()
+  const initialData = {
+    title:"",
+    body:"",
+    label:"",
+    priority:"",
+    color:"",
+    data:data
+  }
   const {response,operation} = useAxios()
   const {encodedToken} = useAuth()
   const [notes, setNotes] = useState([])
-  const [singleNote, setSingleNote] = useState({title:"",body:"",label:"",priority:"",color:""})
+  const [singleNote, setSingleNote] = useState(initialData)
   const [editNote,setEditNote] = useState({title:"",body:"",label:"",priority:"",color:""})
 
 
