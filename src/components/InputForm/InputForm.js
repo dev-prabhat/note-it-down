@@ -3,10 +3,14 @@ import { RichTextEditor } from "../RichTextEditor/RichTextEditor";
 
 import { IoIosColorPalette , IoIosAddCircleOutline} from "react-icons/io";
 import "./inputForm.css"
+import { useState } from "react";
+import { ColorPalette } from "../ColorPalette/ColorPalette";
+
 
 
 export const InputForm = ({setInputModal}) => {
     const {singleNote,setSingleNote,addToNotes} = useNote()
+    const [isColorPalette, setIsColorPalette] = useState(false)
     
     const handleNote = () => {
         setInputModal(prev => !prev)
@@ -14,7 +18,7 @@ export const InputForm = ({setInputModal}) => {
     }
 
     return(
-        <div className="input-form">
+        <div className={`input-form`} style={{backgroundColor:singleNote.color}}>
             <input 
                 className="input-field padding-xs" 
                 type="text" 
@@ -26,7 +30,8 @@ export const InputForm = ({setInputModal}) => {
             <RichTextEditor setRichTextEditor={setSingleNote} richTextContent={singleNote}/>
             <div className="action-container">
                 <IoIosAddCircleOutline title="add" className="icons-common margin-xs" onClick={() =>handleNote(singleNote)}/>
-                <IoIosColorPalette title="color" className="icons-common margin-xs"/>
+                <IoIosColorPalette title="color" className="icons-common margin-xs" onClick={()=>setIsColorPalette(prev => !prev)}/>
+                <ColorPalette setIsColorPalette={setIsColorPalette} setBgColor={setSingleNote} isColorPalette={isColorPalette}/>
                 <select 
                     title="labels"
                     value={singleNote.label}
