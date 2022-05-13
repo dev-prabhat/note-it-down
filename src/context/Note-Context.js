@@ -14,11 +14,18 @@ const NoteProvider = ({children}) => {
     color:"",
     data:data
   }
+  const initialEditData = {
+    title:"",
+    body:"",
+    label:"",
+    priority:"",
+    color:""
+  }
   const {response,operation} = useAxios()
   const {encodedToken} = useAuth()
   const [notes, setNotes] = useState([])
   const [singleNote, setSingleNote] = useState(initialData)
-  const [editNote,setEditNote] = useState({title:"",body:"",label:"",priority:"",color:""})
+  const [editNote,setEditNote] = useState(initialEditData)
 
 
   const addToNotes = (singleNote) => {

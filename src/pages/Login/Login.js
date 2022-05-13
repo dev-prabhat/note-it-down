@@ -7,7 +7,7 @@ import useDocument from "../../customHooks/useDocument";
 
 export const Login = () => {
   useDocument("| Login")
-  const [showPassword, setShowPassord] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
   const {loginData, setLoginData,handleLogin} = useAuth()
     return(
       <>
@@ -39,13 +39,13 @@ export const Login = () => {
                 />
                 {
                   showPassword ? 
-                  <BiShow className="show-hide-icon" onClick={()=>setShowPassord(prev =>!prev)}/> : 
-                  <BiHide className="show-hide-icon" onClick={()=>setShowPassord(prev =>!prev)}/>
+                  <BiShow className="show-hide-icon" onClick={()=>setShowPassword(prev =>!prev)}/> : 
+                  <BiHide className="show-hide-icon" onClick={()=>setShowPassword(prev =>!prev)}/>
                 }
               </div>
                 <div className="other-option-container margin-xs">
                    <div>
-                      <input type="checkbox" id="remember-me" required/>
+                      <input type="checkbox" id="remember-me"/>
                       <label htmlFor="remember-me" className="text-gray padding-xs">Remember me</label>
                    </div>
                     <p className="test-credential padding-xs" 
