@@ -5,19 +5,19 @@ import { useAuth } from "./Auth-Context"
 const NoteContext = createContext()
 
 const NoteProvider = ({children}) => {
-  const data = new Date().toDateString()
+  const getDate = () => new Date().toDateString()
   const initialData = {
     title:"",
     body:"",
-    label:"",
+    tags:[],
     priority:"",
     color:"",
-    data:data
+    date:getDate()
   }
   const initialEditData = {
     title:"",
     body:"",
-    label:"",
+    tags:[],
     priority:"",
     color:""
   }
@@ -57,13 +57,13 @@ const NoteProvider = ({children}) => {
       headers:{"authorization": encodedToken},
       data:{note:updatedNote}
     })
-    setEditNote({title:"",body:"",label:"",priority:""})
+    setEditNote(initialEditData)
   }
 
   useEffect(()=>{
     if(response !== undefined) {
       setNotes(response.data.notes)
-      setSingleNote({title:"",body:"",label:"",priority:""})
+      setSingleNote(initialData)
     }
   },[response])
 

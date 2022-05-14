@@ -11,8 +11,19 @@
     right:2px;
 }
 
+.tag-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px 0;
+    gap: 5px;
+}
+
 .tag{
     color: var(--primary-theme-color);
+    padding: 8px;
+    margin: 0 5px;
+    background-color: var(--primary-theme-shade-20);
+    border-radius: 5rem;
 }
 
 .option-container{

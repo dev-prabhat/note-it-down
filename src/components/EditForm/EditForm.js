@@ -1,4 +1,5 @@
 import React,{useState} from "react"
+import Select from "react-select"
 import {useNote} from "../../context"
 
 import { AiOutlineClose } from "react-icons/ai";
@@ -7,6 +8,17 @@ import { MdUpdate } from "react-icons/md";
 import "./editForm.css"
 import { RichTextEditor } from "../RichTextEditor/RichTextEditor";
 import { ColorPalette } from "../ColorPalette/ColorPalette";
+
+const options = [
+    { value: 'work', label: 'Work' },
+    { value: 'exercise', label: 'Exercise' },
+    { value: 'health', label: 'Health' },
+    { value: "collage", label: "Collage"},
+    { value: "teams", label: "Teams"},
+    { value: "chores", label:"Chores"},
+    { value: "creativity", label:"Creativity"},
+]
+  
 
 
 export const EditForm = ({setEditModal}) => {
@@ -28,26 +40,39 @@ export const EditForm = ({setEditModal}) => {
                     value={editNote.title}
                     required
                 />
-                <AiOutlineClose title="pin" className="close-Icon icons-common" onClick={()=>setEditModal(prev => !prev)}/>
-                <RichTextEditor className="padding-xs" setRichTextEditor={setEditNote} richTextContent={editNote}/>
+                <AiOutlineClose 
+                    title="pin" 
+                    className="close-Icon icons-common" 
+                    onClick={()=>setEditModal(prev => !prev)}
+                />
+                <RichTextEditor 
+                    className="padding-xs" 
+                    setRichTextEditor={setEditNote} 
+                    richTextContent={editNote}
+                />
                 <div className="action-container">
-                    <MdUpdate title="update" className="icons-common margin-xs" onClick={()=>handleUpdate(editNote)}/>
-                    <IoIosColorPalette title="bg-color" className="icons-common margin-xs" onClick={()=>setIsColorPalette(prev => !prev)}/>
-                    <ColorPalette setIsColorPalette={setIsColorPalette} isColorPalette={isColorPalette} setBgColor={setEditNote}/>
-                    <select 
-                        title="labels"
-                        value={editNote.label}
-                        className="margin-xs padding-xxs font-weight-bold text-gray" 
-                        onChange={(e)=>setEditNote((prev)=>({...prev,label:e.target.value}))}
-                    >
-                        <option>Choose</option>
-                        <option value="Office">Office</option>
-                        <option value="Home">Home</option>
-                        <option value="Blog">Blog</option>
-                        <option value="Diet">Diet</option>
-                        <option value="Exercise">Exercise</option>
-                        <option value="Others">Others</option>
-                    </select>
+                    <MdUpdate 
+                        title="update" 
+                        className="icons-common margin-xs" 
+                        onClick={()=>handleUpdate(editNote)}
+                    />
+                    <IoIosColorPalette 
+                        title="bg-color" 
+                        className="icons-common margin-xs" 
+                        onClick={()=>setIsColorPalette(prev => !prev)}
+                    />
+                    <ColorPalette 
+                        setIsColorPalette={setIsColorPalette} 
+                        isColorPalette={isColorPalette} 
+                        setBgColor={setEditNote}
+                    />
+                    <Select
+                        defaultValue={editNote.tags} 
+                        onChange={(e)=>setEditNote((prev) => ({...prev,tags:[...e]}))} 
+                        options={options} 
+                        isMulti={true} 
+                        isSearchable={true}
+                    />
                     <select 
                         title="priority"
                         value={editNote.priority}

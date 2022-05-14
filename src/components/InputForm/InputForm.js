@@ -1,11 +1,21 @@
 import {useNote} from "../../context"
 import { RichTextEditor } from "../RichTextEditor/RichTextEditor";
+import Select from "react-select"
 
 import { IoIosColorPalette , IoIosAddCircleOutline} from "react-icons/io";
 import "./inputForm.css"
 import { useState } from "react";
 import { ColorPalette } from "../ColorPalette/ColorPalette";
 
+const options = [
+  { value: 'work', label: 'Work' },
+  { value: 'exercise', label: 'Exercise' },
+  { value: 'health', label: 'Health' },
+  { value: "collage", label: "Collage"},
+  { value: "teams", label: "Teams"},
+  { value: "chores", label:"Chores"},
+  { value: "creativity", label:"Creativity"},
+]
 
 
 export const InputForm = ({setInputModal}) => {
@@ -29,23 +39,28 @@ export const InputForm = ({setInputModal}) => {
             />
             <RichTextEditor setRichTextEditor={setSingleNote} richTextContent={singleNote}/>
             <div className="action-container">
-                <IoIosAddCircleOutline title="add" className="icons-common margin-xs" onClick={() =>handleNote(singleNote)}/>
-                <IoIosColorPalette title="color" className="icons-common margin-xs" onClick={()=>setIsColorPalette(prev => !prev)}/>
-                <ColorPalette setIsColorPalette={setIsColorPalette} setBgColor={setSingleNote} isColorPalette={isColorPalette}/>
-                <select 
-                    title="labels"
-                    value={singleNote.label}
-                    className="margin-xs padding-xxs font-weight-bold text-gray" 
-                    onChange={(e)=>setSingleNote((prev)=>({...prev,label:e.target.value}))}
-                >
-                    <option>Labels</option>
-                    <option value="Office">Office</option>
-                    <option value="Home">Home</option>
-                    <option value="Blog">Blog</option>
-                    <option value="Diet">Diet</option>
-                    <option value="Exercise">Exercise</option>
-                    <option value="Others">Others</option>
-                </select>
+                <IoIosAddCircleOutline 
+                    title="add" 
+                    className="icons-common margin-xs" 
+                    onClick={() =>handleNote(singleNote)}
+                />
+                <IoIosColorPalette 
+                    title="color" 
+                    className="icons-common margin-xs" 
+                    onClick={()=>setIsColorPalette(prev => !prev)}
+                />
+                <ColorPalette 
+                    setIsColorPalette={setIsColorPalette} 
+                    setBgColor={setSingleNote} 
+                    isColorPalette={isColorPalette}
+                />
+                <Select 
+                    defaultValue={singleNote.tags} 
+                    onChange={(e)=>setSingleNote((prev) => ({...prev,tags:[...e]}))} 
+                    options={options} 
+                    isMulti={true} 
+                    isSearchable={true}
+                />
                 <select 
                     title="priority"
                     value={singleNote.priority}
