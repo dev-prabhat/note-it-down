@@ -41,7 +41,7 @@ export const EditForm = ({setEditModal}) => {
                     required
                 />
                 <AiOutlineClose 
-                    title="pin" 
+                    title="close" 
                     className="close-Icon icons-common" 
                     onClick={()=>setEditModal(prev => !prev)}
                 />

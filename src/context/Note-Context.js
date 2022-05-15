@@ -27,7 +27,6 @@ const NoteProvider = ({children}) => {
   const [singleNote, setSingleNote] = useState(initialData)
   const [editNote,setEditNote] = useState(initialEditData)
 
-
   const addToNotes = (singleNote) => {
     operation({
       method:"post",
@@ -57,13 +56,13 @@ const NoteProvider = ({children}) => {
       headers:{"authorization": encodedToken},
       data:{note:updatedNote}
     })
-    setEditNote(initialEditData)
   }
 
   useEffect(()=>{
     if(response !== undefined) {
       setNotes(response.data.notes)
       setSingleNote(initialData)
+      setEditNote(initialEditData)
     }
   },[response])
 

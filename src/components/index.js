@@ -7,6 +7,7 @@ import {PrivateRoute} from "./PrivateRoute"
 import {AuthRoute} from "./AuthRoute"
 import { EditForm } from "./EditForm/EditForm"
 import { RichTextEditor } from "./RichTextEditor/RichTextEditor"
+import {FilterComponent} from "./FilterComponent/FilterComponent"
 
 
-export {NavBar,Header,InputForm,SingleNote,Modal,PrivateRoute,AuthRoute,EditForm,RichTextEditor}
+export {NavBar,Header,InputForm,SingleNote,Modal,PrivateRoute,AuthRoute,EditForm,RichTextEditor,FilterComponent}
