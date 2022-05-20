@@ -38,6 +38,12 @@ const FilterProvider = ({children}) => {
                     ...state,
                     byDate:action.payload
                 }
+            case "CLEAR_ALL":
+                return{
+                    byTags:[],
+                    byDate:'',
+                    byPriority:[]
+                }
             default:
               return state
        }

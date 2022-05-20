@@ -1,3 +1,4 @@
+import toast from "react-hot-toast"
 import {useState} from "react"
 import axios from "axios"
 
@@ -6,7 +7,7 @@ axios.defaults.baseURL = ""
 export const useAxios = () => {
     const [isLoaded , setIsLoaded] = useState(false)
     const [response, setResponse] = useState(undefined)
-    const [error, setError] = useState("")
+    
 
     const operation = async (params) => {
        try {
@@ -14,11 +15,11 @@ export const useAxios = () => {
            const result = await axios.request(params)
            setResponse(result)
        } catch (error) {
-           setError(error)
+        toast.error(error.response.data.message,{duration:1000})
        }finally{
            setIsLoaded(false)
        }
     }
 
-    return {isLoaded,response,error,operation}
+    return {isLoaded,response,operation}
 }

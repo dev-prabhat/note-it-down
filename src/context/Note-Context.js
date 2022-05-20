@@ -1,5 +1,6 @@
 import React,{createContext,useContext,useState,useEffect} from "react"
-import { useAxios } from "../customHooks/useAxios"
+import toast from "react-hot-toast"
+import { useAxios } from "../customHooks/"
 import { useAuth } from "./Auth-Context"
 
 const NoteContext = createContext()
@@ -34,6 +35,7 @@ const NoteProvider = ({children}) => {
       headers:{"authorization": encodedToken},
       data:{note:singleNote}
     })
+    toast.success("Note added successfully",{duration:1000})
   } 
 
   const deleteNote = (_id) => {
@@ -42,6 +44,7 @@ const NoteProvider = ({children}) => {
       url:`/api/notes/${_id}`,
       headers:{"authorization": encodedToken},
     })
+    toast.success("Note remove successfully",{duration:1000})
   }
 
   const populateEditModal = (_id) => {
@@ -56,6 +59,7 @@ const NoteProvider = ({children}) => {
       headers:{"authorization": encodedToken},
       data:{note:updatedNote}
     })
+    toast.success("Note edited successfully",{duration:1000})
   }
 
   useEffect(()=>{

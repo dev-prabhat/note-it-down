@@ -42,7 +42,7 @@ export const FilterComponent = ({setFilterModal}) => {
 
     return(
         <div className="filter-wrapper padding-xs">
-            <form>
+            <div>
                 <h2 className="head-sm">Filter by Tags</h2>
                 {
                     options.map(option => (
@@ -85,7 +85,12 @@ export const FilterComponent = ({setFilterModal}) => {
                             </div>
                         ))
                     }
-            </form>
+                    <button 
+                        className="btn btn-primary border-radius-xs d-100"
+                        onClick={()=>filterDispatch({type:"CLEAR_ALL"})}>
+                        Clear All
+                    </button>
+            </div>
             <AiOutlineClose
               title="close" 
               className="close-Icon icons-common" 

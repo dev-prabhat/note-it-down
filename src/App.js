@@ -2,10 +2,12 @@ import { Archive, Home, Labels, LandingPage, Mock, Trash,Login } from "./pages/i
 import {Routes, Route} from "react-router-dom"
 import "./common.css"
 import { PrivateRoute,AuthRoute, Loading } from "./components";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <>
+      <Toaster/>
       <Loading/>
       <Routes>
         <Route path="/" element={<LandingPage/>}/>

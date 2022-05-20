@@ -1,7 +1,7 @@
 import { MdCreate ,MdFilterList} from "react-icons/md";
 import {Header, InputForm, NavBar,SingleNote,Modal,EditForm,FilterComponent} from "../../components"
 import {useModal,useFilter} from "../../context"
-import useDocument from "../../customHooks/useDocument";
+import {useDocument} from "../../customHooks";
    
 import "../commonPage.css"
 import "./home.css"

@@ -1,4 +1,5 @@
 import React,{createContext,useContext,useState,useEffect} from "react"
+import toast from "react-hot-toast"
 import { useAxios } from "../customHooks/useAxios" 
 
 const AuthContext = createContext()
@@ -22,6 +23,7 @@ const AuthProvider = ({children}) => {
             url:"/api/auth/login",
             data :{email:loginData.email,password:loginData.password}
         })
+        toast.success("LoggedIn successfully",{duration:1000})
     }
 
     const handleLogout = () => {
