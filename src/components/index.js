@@ -8,6 +8,7 @@ import {AuthRoute} from "./AuthRoute"
 import { EditForm } from "./EditForm/EditForm"
 import { RichTextEditor } from "./RichTextEditor/RichTextEditor"
 import {FilterComponent} from "./FilterComponent/FilterComponent"
+import { Loading } from "./Loading/Loading"
 
 
-export {NavBar,Header,InputForm,SingleNote,Modal,PrivateRoute,AuthRoute,EditForm,RichTextEditor,FilterComponent}
+export {NavBar,Header,InputForm,SingleNote,Modal,PrivateRoute,AuthRoute,EditForm,RichTextEditor,FilterComponent,Loading}

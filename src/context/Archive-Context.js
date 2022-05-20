@@ -8,8 +8,8 @@ const ArchiveContext = createContext()
 const ArchiveProvider = ({children}) => {
     const {encodedToken} = useAuth()
     const {setNotes} = useNote()
-    const {response,operation} = useAxios()
-    const {response:deletedData,operation:deleteOperation} = useAxios()
+    const {isLoaded,response,operation} = useAxios()
+    const {isLoaded:deleteLoading,response:deletedData,operation:deleteOperation} = useAxios()
     const [archiveNotes, setArchiveNote] = useState([])
 
     const addToArchive = (archiveNote) => {
@@ -53,7 +53,15 @@ const ArchiveProvider = ({children}) => {
     },[response])
 
     return(
-        <ArchiveContext.Provider value={{archiveNotes,addToArchive,deleteFromArchive,restoreFromArchive}}>
+        <ArchiveContext.Provider 
+        value={{
+          archiveNotes,
+          isLoaded,
+          addToArchive,
+          deleteLoading,
+          deleteFromArchive,
+          restoreFromArchive
+        }}>
           {children}
         </ArchiveContext.Provider>
     )

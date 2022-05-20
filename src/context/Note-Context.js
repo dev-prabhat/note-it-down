@@ -5,7 +5,7 @@ import { useAuth } from "./Auth-Context"
 const NoteContext = createContext()
 
 const NoteProvider = ({children}) => {
-  const getDate = () => new Date().toDateString()
+  const getDate = () => new Date().getTime()
   const initialData = {
     title:"",
     body:"",
@@ -21,7 +21,7 @@ const NoteProvider = ({children}) => {
     priority:"",
     color:""
   }
-  const {response,operation} = useAxios()
+  const {isLoaded:noteLoading,response,operation} = useAxios()
   const {encodedToken} = useAuth()
   const [notes, setNotes] = useState([])
   const [singleNote, setSingleNote] = useState(initialData)
@@ -68,7 +68,20 @@ const NoteProvider = ({children}) => {
 
 
   return(
-      <NoteContext.Provider value={{notes,singleNote,editNote,setNotes,setSingleNote,addToNotes,deleteNote,populateEditModal,setEditNote,updateNote}}>
+      <NoteContext.Provider 
+      value={{
+        notes,
+        noteLoading,
+        singleNote,
+        editNote,
+        setNotes,
+        setSingleNote,
+        addToNotes,
+        deleteNote,
+        populateEditModal,
+        setEditNote,
+        updateNote
+        }}>
           {children}
       </NoteContext.Provider>
   )

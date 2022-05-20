@@ -33,6 +33,11 @@ const FilterProvider = ({children}) => {
                     ...state,
                     byPriority:state.byPriority.filter(ele => ele !== action.payload)
                 }
+            case "SORT_BY_DATE":
+                return{
+                    ...state,
+                    byDate:action.payload
+                }
             default:
               return state
        }
@@ -40,7 +45,13 @@ const FilterProvider = ({children}) => {
 
     const filteredNotes = () => {
         let filterNotes = [...notes]
-        const {byTags,byPriority} = filterState
+        const {byTags,byPriority,byDate} = filterState
+
+        if(byDate){
+            filterNotes = filterNotes.sort((a,b)=>{
+                return byDate === "NEW_TO_OLDER" ? a.date - b.date : b.date - a.date
+            })
+        }
 
         if(byTags.length > 0){
             filterNotes = filterNotes.filter(note => note.tags.some(i => byTags.includes(i.value)))

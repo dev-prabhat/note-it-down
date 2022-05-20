@@ -19,9 +19,14 @@ const priorities = [
     {id:3,value:"Low"}
 ]
 
+const sort = [
+    {value:"NEW_TO_OLDER",label:"New to Old"},
+    {value:"OLDER_TO_NEW",label:"Old to new"},
+]
+
 export const FilterComponent = ({setFilterModal}) => {
     const {filterState,filterDispatch} = useFilter()
-    const {byTags,byPriority} = filterState
+    const {byTags,byPriority,byDate} = filterState
 
     const clickHandler = (value) => {
        let index = byTags.findIndex(tag => tag === value)
@@ -66,6 +71,20 @@ export const FilterComponent = ({setFilterModal}) => {
                         </div>
                     ))
                 }
+                <h2 className="head-sm">Sort by Date</h2>
+                    {
+                        sort.map(sortOption => (
+                            <div key={sortOption.value}>
+                                <input
+                                   type="radio"
+                                   id={sortOption.value}
+                                   onChange={()=>filterDispatch({type:"SORT_BY_DATE",payload:sortOption.value})}
+                                   checked={byDate === sortOption.value}
+                                />
+                                <label className="margin-xs" htmlFor={sortOption.value}>{sortOption.label}</label>
+                            </div>
+                        ))
+                    }
             </form>
             <AiOutlineClose
               title="close" 

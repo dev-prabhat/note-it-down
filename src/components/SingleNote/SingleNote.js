@@ -10,7 +10,7 @@ export const SingleNote = ({note, setEditModal, isHomePage = false, isTrashPage 
     const {addToArchive,deleteFromArchive,restoreFromArchive} = useArchive()
     const {moveToTrash,deleteFromTrash} = useTrash()
 
-    const {title,body,tags,_id,priority,color,date} = note
+    const {title,body,tags,_id,priority,color} = note
 
     const restoreHandler = (note) => {
         addToNotes(note)
@@ -46,7 +46,7 @@ export const SingleNote = ({note, setEditModal, isHomePage = false, isTrashPage 
                 isHomePage &&  <BsFillPinFill title="pin" className="pin-Icon icons-common "/>
             }
             <div className="option-container">
-                <p>{date}</p>
+                <p>{new Date().toDateString()}</p>
                 {
                     isHomePage && (
                     <div className="icon-container">

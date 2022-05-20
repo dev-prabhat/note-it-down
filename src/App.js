@@ -1,11 +1,12 @@
 import { Archive, Home, Labels, LandingPage, Mock, Trash,Login } from "./pages/index";
 import {Routes, Route} from "react-router-dom"
 import "./common.css"
-import { PrivateRoute,AuthRoute } from "./components";
+import { PrivateRoute,AuthRoute, Loading } from "./components";
 
 function App() {
   return (
     <>
+      <Loading/>
       <Routes>
         <Route path="/" element={<LandingPage/>}/>
         
