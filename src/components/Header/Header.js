@@ -1,5 +1,6 @@
+import { MdLogout } from "react-icons/md";
 import { useAuth ,useFilter} from "../../context"
-import { NavLink } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import "./header.css"
 
 export const Header = () => {
@@ -7,7 +8,6 @@ export const Header = () => {
   const {handleLogout} = useAuth()
   
     return(
-      <>
         <header className="website-header">
             <NavLink to="/" className='hero-title head-lg header-title font-weight-semibold'>
                 NoteIt <span className="highlight">Down</span>
@@ -18,8 +18,18 @@ export const Header = () => {
                 onChange={(e)=>filterDispatch({type:"SEARCH",payload:e.target.value})}
                 value={filterState.search}
             />
-            <button className="btn btn-primary border-radius-xs" onClick={handleLogout}>Logout</button>
+            <div className="d-flex">
+              <Link to="/profile">
+                <div className="avatar avatar-xs">
+                  <img
+                    className="img-responsive img-round"
+                    src={process.env.PUBLIC_URL +"/svg/avatarIcon.svg"}
+                    alt="avatar"
+                  />
+                </div>
+              </Link>
+              <MdLogout onClick={handleLogout} className="logout-icon"/>
+            </div>   
         </header>
-      </>
     )
 }

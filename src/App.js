@@ -1,4 +1,4 @@
-import { Archive, Home, Labels, LandingPage, Mock, Trash,Login } from "./pages/index";
+import { Archive, Home, Labels, LandingPage, Mock, Trash,Login, ProfilePage } from "./pages/index";
 import {Routes, Route} from "react-router-dom"
 import "./common.css"
 import { PrivateRoute,AuthRoute, Loading } from "./components";
@@ -17,6 +17,7 @@ function App() {
           <Route path="/archive" element={<Archive/>}/>
           <Route path="/labels" element={<Labels/>}/>
           <Route path="/trash" element={<Trash/>}/>
+          <Route path="/profile" element={<ProfilePage/>}/>
         </Route> 
 
         <Route element={<AuthRoute/>}> 

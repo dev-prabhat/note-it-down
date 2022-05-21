@@ -1,0 +1,10 @@
+.profile__wrapper{
+    background-color: var(--danger-light-color);
+    width: 70%;
+    margin: 5rem auto;
+
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+} 
