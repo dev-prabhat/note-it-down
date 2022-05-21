@@ -1,9 +1,11 @@
 import {useState} from "react"
+import { Link } from "react-router-dom";
 import {useAuth} from "../../context"
-
+import {useDocument} from "../../customHooks";
 import { BiShow,BiHide } from "react-icons/bi";
 import "./login.css"
-import {useDocument} from "../../customHooks";
+
+
 
 export const Login = () => {
   useDocument("| Login")
@@ -54,6 +56,9 @@ export const Login = () => {
                     </p>
                 </div>
               <button className="btn btn-primary border-radius-xs text-sm d-100"> Login</button>
+              <p className="text-center text-gray font-weight-semibold margin-xs">Don't have an Account?
+                <Link className="highlight" to="/signup"> Click Here</Link>
+              </p>
           </form>
          </main>
       </>

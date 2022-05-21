@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { Header, NavBar, SingleNote} from "../../components/index"
 import {useTrash} from "../../context"
 import {useDocument} from "../../customHooks"
@@ -13,6 +14,13 @@ export const Trash = () => {
            <Header/>
            <NavBar/>
            <div className="page-content padding-xs">
+               {
+                   trashNotes.length === 0 && <div className="text-center">
+                   <h1 className="text-gray head-md"> 
+                      This is empty Go to <Link to="/home" className="highlight">Home</Link> 
+                   </h1>
+                 </div>
+               }
                  <div className="trash-notes">
                      {
                          trashNotes && trashNotes.map(trashNote => (

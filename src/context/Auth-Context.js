@@ -7,6 +7,8 @@ const AuthContext = createContext()
 const AuthProvider = ({children}) => {
     const {isLoaded:authLoading,response,operation} = useAxios()
     const [loginData, setLoginData] = useState({email:"",password:""})
+    const [signupUser, setSignUpUser] = useState({firstName:"",lastName:"",email:"",password:""})
+    const [user,setUser] = useState({})
     const [encodedToken, setEncodedToken] = useState(null)    
 
     useEffect(()=>{
@@ -26,14 +28,28 @@ const AuthProvider = ({children}) => {
         toast.success("LoggedIn successfully",{duration:1000})
     }
 
+    const handleSignUp = (e) => {
+        const {firstName,lastName,email,password} = signupUser
+          e.preventDefault()
+          operation({
+              method:"post",
+              url:"/api/auth/signup",
+              data:{firstName,lastName,email,password}
+          })
+        toast.success("SignUp successfully",{duration:1000})
+    }
+
     const handleLogout = () => {
-        localStorage.removeItem("encodedToken")
+        localStorage.clear()
+        setUser({})
         setEncodedToken(null)
     }
 
     useEffect(()=>{
         if(response !== undefined){
             localStorage.setItem("encodedToken",response.data.encodedToken)
+            localStorage.setItem("noteUser",JSON.stringify(response.data.foundUser))
+            setUser(response.data.foundUser)
             setEncodedToken(response.data.encodedToken)
             setLoginData({email:"",password:""})
         }
@@ -47,8 +63,12 @@ const AuthProvider = ({children}) => {
             encodedToken,
             authLoading,
             loginData,
+            user,
             setLoginData,
+            handleSignUp,
             handleLogin,
+            signupUser, 
+            setSignUpUser,
             handleLogout
         }}>
           {children}

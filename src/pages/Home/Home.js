@@ -23,6 +23,11 @@ export const Home = () => {
                 <Modal showModal={isFilterModal} setShowModal={setFilterModal}>
                    <FilterComponent setFilterModal={setFilterModal}/>
                 </Modal>
+                        {
+                            filteredNotes().length === 0 && <div className="text-center">
+                                <h1 className="text-gray head-md"> This is empty add your important notes here</h1>
+                            </div>
+                        }
               <div className="all-notes">
                   {
                       filteredNotes().map(note => (

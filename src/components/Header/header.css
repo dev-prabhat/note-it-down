@@ -19,3 +19,9 @@
     margin: 0 auto;
     height: 3em;
 }
+
+.logout-icon{
+    font-size: 2rem;
+    cursor: pointer;
+    margin-left: 1.5rem;
+}
