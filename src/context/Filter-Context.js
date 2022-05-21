@@ -8,7 +8,8 @@ const FilterProvider = ({children}) => {
     const [filterState, filterDispatch ] = useReducer(filterReducer,{
         byTags:[],
         byDate:'',
-        byPriority:[]
+        byPriority:[],
+        search:""
     })
 
     function filterReducer(state,action){
@@ -38,6 +39,11 @@ const FilterProvider = ({children}) => {
                     ...state,
                     byDate:action.payload
                 }
+            case "SEARCH":
+                return{
+                    ...state,
+                    search:action.payload
+                }
             case "CLEAR_ALL":
                 return{
                     byTags:[],
@@ -51,7 +57,7 @@ const FilterProvider = ({children}) => {
 
     const filteredNotes = () => {
         let filterNotes = [...notes]
-        const {byTags,byPriority,byDate} = filterState
+        const {byTags,byPriority,byDate,search} = filterState
 
         if(byDate){
             filterNotes = filterNotes.sort((a,b)=>{
@@ -66,6 +72,8 @@ const FilterProvider = ({children}) => {
         if(byPriority.length > 0){
             filterNotes = filterNotes.filter(note => byPriority.includes(note.priority))
         }
+
+        filterNotes = filterNotes.filter(note => note.title.toLowerCase().includes(search.toLowerCase()))
         return filterNotes
     }
 

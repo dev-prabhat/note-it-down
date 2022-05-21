@@ -29,13 +29,16 @@ const NoteProvider = ({children}) => {
   const [editNote,setEditNote] = useState(initialEditData)
 
   const addToNotes = (singleNote) => {
-    operation({
-      method:"post",
-      url:"/api/notes",
-      headers:{"authorization": encodedToken},
-      data:{note:singleNote}
-    })
-    toast.success("Note added successfully",{duration:1000})
+    if(singleNote.title.trim() !== "" && singleNote.body.trim() !== ""){
+      operation({
+        method:"post",
+        url:"/api/notes",
+        headers:{"authorization": encodedToken},
+        data:{note:singleNote}
+      })
+      toast.success("Note added successfully",{duration:1000})
+    }
+    else toast.error("Invalid input",{duration:1000})
   } 
 
   const deleteNote = (_id) => {
@@ -53,13 +56,16 @@ const NoteProvider = ({children}) => {
   } 
 
   const updateNote = (updatedNote) => {
-    operation({
-      method:"post",
-      url:`/api/notes/${updatedNote._id}`,
-      headers:{"authorization": encodedToken},
-      data:{note:updatedNote}
-    })
-    toast.success("Note edited successfully",{duration:1000})
+    if(updateNote.title.trim() !== "" && updateNote.body.trim() !== ""){
+      operation({
+        method:"post",
+        url:`/api/notes/${updatedNote._id}`,
+        headers:{"authorization": encodedToken},
+        data:{note:updatedNote}
+      })
+      toast.success("Note edited successfully",{duration:1000})
+    }
+    else toast.error("Updation failed input",{duration:1000})
   }
 
   useEffect(()=>{
