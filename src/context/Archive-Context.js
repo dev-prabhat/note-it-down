@@ -1,15 +1,17 @@
-import { useAxios } from "../customHooks/useAxios"
+import React,{createContext,useContext,useState,useEffect} from "react"
+import toast from "react-hot-toast"
+import { useAxios } from "../customHooks"
 import { useAuth } from "./Auth-Context"
 import { useNote } from "./Note-Context"
-import React,{createContext,useContext,useState,useEffect} from "react"
+
 
 const ArchiveContext = createContext()
 
 const ArchiveProvider = ({children}) => {
     const {encodedToken} = useAuth()
     const {setNotes} = useNote()
-    const {response,operation} = useAxios()
-    const {response:deletedData,operation:deleteOperation} = useAxios()
+    const {isLoaded,response,operation} = useAxios()
+    const {isLoaded:deleteLoading,response:deletedData,operation:deleteOperation} = useAxios()
     const [archiveNotes, setArchiveNote] = useState([])
 
     const addToArchive = (archiveNote) => {
@@ -19,6 +21,7 @@ const ArchiveProvider = ({children}) => {
         headers:{"authorization": encodedToken},
         data:{note:archiveNote}
       })
+      toast.success("Added to archive successfully",{duration:1000})
     }
 
     const deleteFromArchive = (archiveNote) => {
@@ -27,6 +30,7 @@ const ArchiveProvider = ({children}) => {
         url:`/api/archives/delete/${archiveNote._id}`,
         headers:{"authorization": encodedToken},
       })
+      toast.success("Deleted from archive successfully",{duration:1000})
     }
 
     const restoreFromArchive = (archiveNote) => {
@@ -35,6 +39,7 @@ const ArchiveProvider = ({children}) => {
         url:`/api/archives/restore/${archiveNote._id}`,
         headers:{"authorization": encodedToken}
       })
+      toast.success("Restore from archive successfully",{duration:1000})
     }
     
     useEffect(()=>{
@@ -53,7 +58,15 @@ const ArchiveProvider = ({children}) => {
     },[response])
 
     return(
-        <ArchiveContext.Provider value={{archiveNotes,addToArchive,deleteFromArchive,restoreFromArchive}}>
+        <ArchiveContext.Provider 
+        value={{
+          archiveNotes,
+          isLoaded,
+          addToArchive,
+          deleteLoading,
+          deleteFromArchive,
+          restoreFromArchive
+        }}>
           {children}
         </ArchiveContext.Provider>
     )

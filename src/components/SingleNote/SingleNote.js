@@ -10,7 +10,7 @@ export const SingleNote = ({note, setEditModal, isHomePage = false, isTrashPage 
     const {addToArchive,deleteFromArchive,restoreFromArchive} = useArchive()
     const {moveToTrash,deleteFromTrash} = useTrash()
 
-    const {title,body,label,_id,priority,color,data} = note
+    const {title,body,tags,_id,priority,color} = note
 
     const restoreHandler = (note) => {
         addToNotes(note)
@@ -31,18 +31,22 @@ export const SingleNote = ({note, setEditModal, isHomePage = false, isTrashPage 
         deleteFromArchive(note)
         moveToTrash(note)
     }
-
+   
     return(
         <div className="single-note margin-xs padding-xs" style={{backgroundColor:color}}>
             <h2 className="head-md">{title}</h2>
             <div className="text-sm padding-sm" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(body) }}></div>
-            <p className="text-sm font-weight-semibold tag">#{label}</p>
+            <div className="tag-container">
+                {tags.map(tag => (
+                    <p key={tag.value} className="text-sm  tag">{tag.value}</p>
+                ))}
+            </div>
             <p className="text-sm font-weight-semibold">{priority}</p>
             {
                 isHomePage &&  <BsFillPinFill title="pin" className="pin-Icon icons-common "/>
             }
             <div className="option-container">
-                <p>{data}</p>
+                <p>{new Date().toDateString()}</p>
                 {
                     isHomePage && (
                     <div className="icon-container">

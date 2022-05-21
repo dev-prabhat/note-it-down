@@ -1,6 +1,6 @@
 import {NavLink} from "react-router-dom"
 import {useAuth} from "../../context/index"
-import useDocument from "../../customHooks/useDocument"
+import {useDocument} from "../../customHooks"
 
 import "./landingpage.css"
 

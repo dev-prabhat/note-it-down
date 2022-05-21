@@ -1,7 +1,7 @@
-import { MdCreate } from "react-icons/md";
-import {Header, InputForm, NavBar,SingleNote,Modal,EditForm} from "../../components"
-import {useNote,useModal} from "../../context"
-import useDocument from "../../customHooks/useDocument";
+import { MdCreate ,MdFilterList} from "react-icons/md";
+import {Header, InputForm, NavBar,SingleNote,Modal,EditForm,FilterComponent} from "../../components"
+import {useModal,useFilter} from "../../context"
+import {useDocument} from "../../customHooks";
    
 import "../commonPage.css"
 import "./home.css"
@@ -9,8 +9,8 @@ import "./home.css"
 export const Home = () => {
     useDocument("| Home")
 
-    const {notes} = useNote()
-    const {isInputModal,setInputModal,isEditModal,setEditModal} = useModal()
+    const {filteredNotes} = useFilter()
+    const {isInputModal,setInputModal,isEditModal,setEditModal,isFilterModal,setFilterModal} = useModal()
     return(
         <>
          <main className="main-page">
@@ -20,9 +20,12 @@ export const Home = () => {
                 <Modal showModal={isInputModal} setShowModal={setInputModal}>
                     <InputForm  setInputModal={setInputModal}/>
                 </Modal>
+                <Modal showModal={isFilterModal} setShowModal={setFilterModal}>
+                   <FilterComponent setFilterModal={setFilterModal}/>
+                </Modal>
               <div className="all-notes">
                   {
-                      notes.map(note => (
+                      filteredNotes().map(note => (
                           <SingleNote key={note._id} note={note} setEditModal={setEditModal} isHomePage={true}/>
                       ))
                   }
@@ -30,8 +33,11 @@ export const Home = () => {
                  <Modal showModal={isEditModal} setShowModal={setEditModal}>
                     <EditForm  setEditModal={setEditModal}/>
                 </Modal>
-                <div className="create-note-container">
-                    <MdCreate className="create-note-icon" onClick={()=>setInputModal(isInputModal =>!isInputModal)}/>
+                <div className="filter-icon__wrapper">
+                    <MdFilterList className="filter-icon" onClick={()=>setFilterModal(isFilterModal => !isFilterModal)}/>
+                </div>
+                <div className="create-icon__wrapper">
+                    <MdCreate className="create-icon" onClick={()=>setInputModal(isInputModal =>!isInputModal)}/>
                 </div>
              </div>
          </main>

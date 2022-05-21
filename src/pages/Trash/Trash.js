@@ -1,6 +1,6 @@
 import { Header, NavBar, SingleNote} from "../../components/index"
 import {useTrash} from "../../context"
-import useDocument from "../../customHooks/useDocument"
+import {useDocument} from "../../customHooks"
 import "../commonPage.css"
 import "./trash.css"
 

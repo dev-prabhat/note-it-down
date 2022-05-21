@@ -3,7 +3,7 @@ import {useAuth} from "../../context"
 
 import { BiShow,BiHide } from "react-icons/bi";
 import "./login.css"
-import useDocument from "../../customHooks/useDocument";
+import {useDocument} from "../../customHooks";
 
 export const Login = () => {
   useDocument("| Login")

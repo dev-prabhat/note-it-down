@@ -1,32 +1,32 @@
 import React,{createContext,useContext,useState,useEffect} from "react"
-import { useAxios } from "../customHooks/useAxios"
+import toast from "react-hot-toast"
+import { useAxios } from "../customHooks/"
 import { useAuth } from "./Auth-Context"
 
 const NoteContext = createContext()
 
 const NoteProvider = ({children}) => {
-  const data = new Date().toDateString()
+  const getDate = () => new Date().getTime()
   const initialData = {
     title:"",
     body:"",
-    label:"",
+    tags:[],
     priority:"",
     color:"",
-    data:data
+    date:getDate()
   }
   const initialEditData = {
     title:"",
     body:"",
-    label:"",
+    tags:[],
     priority:"",
     color:""
   }
-  const {response,operation} = useAxios()
+  const {isLoaded:noteLoading,response,operation} = useAxios()
   const {encodedToken} = useAuth()
   const [notes, setNotes] = useState([])
   const [singleNote, setSingleNote] = useState(initialData)
   const [editNote,setEditNote] = useState(initialEditData)
-
 
   const addToNotes = (singleNote) => {
     operation({
@@ -35,6 +35,7 @@ const NoteProvider = ({children}) => {
       headers:{"authorization": encodedToken},
       data:{note:singleNote}
     })
+    toast.success("Note added successfully",{duration:1000})
   } 
 
   const deleteNote = (_id) => {
@@ -43,6 +44,7 @@ const NoteProvider = ({children}) => {
       url:`/api/notes/${_id}`,
       headers:{"authorization": encodedToken},
     })
+    toast.success("Note remove successfully",{duration:1000})
   }
 
   const populateEditModal = (_id) => {
@@ -57,19 +59,33 @@ const NoteProvider = ({children}) => {
       headers:{"authorization": encodedToken},
       data:{note:updatedNote}
     })
-    setEditNote({title:"",body:"",label:"",priority:""})
+    toast.success("Note edited successfully",{duration:1000})
   }
 
   useEffect(()=>{
     if(response !== undefined) {
       setNotes(response.data.notes)
-      setSingleNote({title:"",body:"",label:"",priority:""})
+      setSingleNote(initialData)
+      setEditNote(initialEditData)
     }
   },[response])
 
 
   return(
-      <NoteContext.Provider value={{notes,singleNote,editNote,setNotes,setSingleNote,addToNotes,deleteNote,populateEditModal,setEditNote,updateNote}}>
+      <NoteContext.Provider 
+      value={{
+        notes,
+        noteLoading,
+        singleNote,
+        editNote,
+        setNotes,
+        setSingleNote,
+        addToNotes,
+        deleteNote,
+        populateEditModal,
+        setEditNote,
+        updateNote
+        }}>
           {children}
       </NoteContext.Provider>
   )
