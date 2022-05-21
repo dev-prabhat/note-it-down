@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { Header, NavBar, SingleNote} from "../../components/index"
 import {useTrash} from "../../context"
 import {useDocument} from "../../customHooks"
