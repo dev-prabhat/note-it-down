@@ -21,4 +21,5 @@ A Note taking app where you keep your all important Note build with ReactJS , Ja
 - Edit a Note
 - Implemented Rich Text Editor 
 - User Profile Page
-
+- Dark Mode
+- Made Site Responsive
