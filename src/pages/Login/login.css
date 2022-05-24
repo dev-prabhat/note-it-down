@@ -1,11 +1,7 @@
 .login-page{
-    height: 100vh;
-    flex-wrap: wrap;
-}
-
-.img-wrapper{
-    width: 45%;
-    margin: 5px auto;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
 }
 
 .login-form{
@@ -38,4 +34,16 @@
 .test-credential{
     color: var(--primary-theme-color);
     cursor: pointer;
+}
+
+@media screen and (max-width:768px) {
+    .login-form{
+        width: 60%;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .login-form{
+        width: 80%;
+    }
 }

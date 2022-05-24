@@ -12,11 +12,8 @@ export const SignUp = () => {
   const {signupUser, setSignUpUser,handleSignUp} = useAuth()
     return(
       <>
-         <main className="d-flex sign-page"> 
-           <figure className="img-wrapper">
-              <img className="img-responsive" src={`${process.env.PUBLIC_URL}/svg/Add notes-bro.svg`} alt="notes_bro"/>
-           </figure>
-          <form className="login-form border-radius-xs" onSubmit={handleSignUp}>
+         <main className="sign-page"> 
+          <form className="signup-form border-radius-xs" onSubmit={handleSignUp}>
             <h1 className="head-md text-center text-gray padding-xs margin-xs">Welcome to NoteIt-<span className="highlight">Down</span></h1>
             
                 <label className="form-label">FirstName</label>

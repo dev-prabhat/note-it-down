@@ -16,7 +16,7 @@ export const Trash = () => {
            <div className="page-content padding-xs">
                {
                    trashNotes.length === 0 && <div className="text-center">
-                   <h1 className="text-gray head-md"> 
+                   <h1 className="text-gray empty-message"> 
                       This is empty Go to <Link to="/home" className="highlight">Home</Link> 
                    </h1>
                  </div>

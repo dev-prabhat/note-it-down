@@ -12,17 +12,17 @@ export const LandingPage = () => {
         <>
            <main className="landing-page-container">
                <section className="hero-info">
-                   <h1 className='hero-title head-xl'>NoteIt <span className="highlight">Down</span></h1>
+                   <h1 className='hero-title'>NoteIt <span className="highlight">Down</span></h1>
                    <div className="hero-detail">
-                        <h2 className="hero-subtitle head-lg">Meet your modern <span className="highlight"> Note Taking Application</span></h2>
-                        <p className="hero-description head-md text-gray"> Don't understand how to manage your daily task and workflow , Here is your solution Just Create your Account and manages your workflow in modern way  
+                        <h2 className="hero-subtitle">Meet your modern <span className="highlight"> Note Taking Application</span></h2>
+                        <p className="hero-description text-gray"> Don't understand how to manage your daily task and workflow , Here is your solution Just Create your Account and manages your workflow in modern way  
                         </p>
                    </div> 
                    <div className="action-buttons">
                        {
                           encodedToken ? ( <NavLink to="/home" className="btn btn-link margin-sm border-radius-xs">Go to Notes</NavLink>) 
                           : (
-                              <ul className="styled-list">
+                              <ul className="styled-list margin-sm">
                                 <li className="list-style-inline">
                                   <NavLink to="/signup" className="btn btn-primary btn-link head-sm border-radius-xs">SignUp</NavLink>
                                 </li>
@@ -33,11 +33,6 @@ export const LandingPage = () => {
                           )
                        }
                    </div>
-               </section>
-               <section className="hero-image">
-                   <figure className="img-container">
-                       <img className="img-responsive" src={`${process.env.PUBLIC_URL}/svg/logo.svg`} alt="landing_page_image"/>
-                   </figure>
                </section>
            </main>
         </>

@@ -1,15 +1,20 @@
 .website-header{
     grid-area: header;
-    padding: 0.5em 1.5em;
+    padding: 0.5rem 1.5rem;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    box-shadow: 0px 0px 10px 2px var(--primary-theme-shade-20);
+    box-shadow: 0px 0px 5px 5px var(--primary-theme-shade-20);
+    position: fixed;
+    z-index: 22;
+    width: 100%;
 }
 
 .header-title{
+    font-size: 2rem;
+    line-height: 2.5rem;
     text-decoration: none;
     color: var(--dark-color);
 }
@@ -20,8 +25,66 @@
     height: 3em;
 }
 
+.header-avatar{
+   width: 2rem;
+}
+
+
 .logout-icon{
     font-size: 2rem;
     cursor: pointer;
     margin-left: 1.5rem;
+}
+
+.theme-icon{
+    font-size: 2rem;
+    cursor: pointer;
+    margin-right: 1.5rem;
+    color: var(--primary-theme-color);
+}
+
+@media screen and (max-width:992px) {
+    .header-title{
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+
+    .search-input{
+        width: 50%;
+        margin: 0 auto;
+    }    
+}
+
+@media screen and (max-width:768px) {
+    .header-title{
+        font-size: 1rem;
+        line-height: 2rem;
+    }
+
+    .search-input{
+        width: 40%;
+        margin: 0 auto;
+    }  
+}
+
+@media screen and (max-width:600px) {
+    .website-header{
+        padding: 0.5rem;
+    }
+
+    .header-title{
+        line-height: 1rem;
+    }
+
+    .theme-icon,.header-avatar,.logout-icon{
+        width: 1.5rem;
+    }
+
+    .logout-icon{
+        margin-left: 8px;   
+    }
+
+    .theme-icon{
+        margin-right: 8px;
+    }
 }

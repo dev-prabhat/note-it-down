@@ -16,7 +16,7 @@ export const Home = () => {
          <main className="main-page">
              <Header/>
              <NavBar/>
-             <div className="page-content padding-xs">
+             <div className="page-content">
                 <Modal showModal={isInputModal} setShowModal={setInputModal}>
                     <InputForm  setInputModal={setInputModal}/>
                 </Modal>

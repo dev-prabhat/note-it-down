@@ -1,14 +1,10 @@
 .sign-page{
-    height: 100vh;
-    flex-wrap: wrap;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
 }
 
-.img-wrapper{
-    width: 45%;
-    margin: 5px auto;
-}
-
-.login-form{
+.signup-form{
     padding: 1.5rem;
     width: 40%;
     margin: 5px auto;
@@ -33,4 +29,18 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+@media screen and (max-width:768px) {
+    .signup-form{
+        width: 60%;
+        margin: 3rem auto;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .signup-form{
+        width: 80%;
+        margin: 3rem auto;
+    }
 }

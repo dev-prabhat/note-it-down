@@ -1,5 +1,5 @@
 import DOMPurify from "dompurify";
-import {useNote,useArchive,useTrash} from "../../context"
+import {useNote,useArchive,useTrash,useTheme} from "../../context"
 import { MdRestore } from "react-icons/md";
 import { BsTrash,BsFillPinFill } from "react-icons/bs";
 import { BiArchiveOut,BiArchiveIn, BiEdit } from "react-icons/bi";
@@ -9,6 +9,7 @@ export const SingleNote = ({note, setEditModal, isHomePage = false, isTrashPage 
     const {deleteNote,populateEditModal,addToNotes} = useNote()
     const {addToArchive,deleteFromArchive,restoreFromArchive} = useArchive()
     const {moveToTrash,deleteFromTrash} = useTrash()
+    const {theme} = useTheme()
 
     const {title,body,tags,_id,priority,color} = note
 
@@ -33,12 +34,15 @@ export const SingleNote = ({note, setEditModal, isHomePage = false, isTrashPage 
     }
    
     return(
-        <div className="single-note margin-xs padding-xs" style={{backgroundColor:color}}>
-            <h2 className="head-md">{title}</h2>
+        <div 
+            className={`single-note margin-xs padding-xs  ${theme === "light" ? "light-theme" : "dark-theme"} `} 
+            style={{backgroundColor:color}}
+        >
+            <h2 className="note-title">{title}</h2>
             <div className="text-sm padding-sm" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(body) }}></div>
             <div className="tag-container">
                 {tags.map(tag => (
-                    <p key={tag.value} className="text-sm  tag">{tag.value}</p>
+                    <p key={tag.value} className="text-sm tag">{tag.value}</p>
                 ))}
             </div>
             <p className="text-sm font-weight-semibold">{priority}</p>
@@ -46,7 +50,7 @@ export const SingleNote = ({note, setEditModal, isHomePage = false, isTrashPage 
                 isHomePage &&  <BsFillPinFill title="pin" className="pin-Icon icons-common "/>
             }
             <div className="option-container">
-                <p>{new Date().toDateString()}</p>
+                <p className="original-date">{new Date().toDateString()}</p>
                 {
                     isHomePage && (
                     <div className="icon-container">

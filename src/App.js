@@ -1,12 +1,14 @@
 import { Archive, Home, LandingPage, Mock, Trash,Login, ProfilePage, SignUp } from "./pages/index";
 import {Routes, Route} from "react-router-dom"
-import "./common.css"
 import { PrivateRoute,AuthRoute, Loading } from "./components";
 import { Toaster } from "react-hot-toast";
+import { useTheme } from "./context";
+import "./common.css"
 
 function App() {
+  const {theme} = useTheme()
   return (
-    <>
+    <div className={`${theme === "light" ? "dark-theme" : "light-theme"}`}>
       <Toaster/>
       <Loading/>
       <Routes>
@@ -26,7 +28,7 @@ function App() {
 
         <Route path="/mock" element={<Mock/>}/>
       </Routes>
-    </>
+    </div>
   );
 }
 

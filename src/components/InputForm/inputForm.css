@@ -26,3 +26,8 @@
   border-radius: 5px;
 }
 
+@media screen and (max-width:600px) {
+    .icons-common{
+        font-size: 1.5rem;
+    }
+}

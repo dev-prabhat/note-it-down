@@ -9,5 +9,14 @@
 
 body{
     font-family: 'Inter', sans-serif;
+}
+
+.dark-theme{
+    background-color: var(--dark-theme-color);
+    color: var(--secondary-theme-color);
+}
+
+.light-theme{
     background-color: var(--secondary-theme-color);
+    color: var(--dark-theme-color);
 }

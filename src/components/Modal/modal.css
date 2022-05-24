@@ -26,6 +26,7 @@
   background-color: white;
   transform: translateY(-200px);
   transition: all 0.3s ease-in-out;
+  min-width: 15%;
 }
 
 .modal-wrapper.show {
@@ -44,4 +45,10 @@
 
 .modal-wrapper.exit .modal-content {
   transform: translateY(-200px);
+}
+
+@media screen and (max-width:768px) {
+  .modal-content {
+    min-width: 30%;
+  }
 }

@@ -3,11 +3,38 @@
     grid-template-areas: 
     "header header header header header header header header header header header header"
     "navbar page-content page-content page-content page-content page-content page-content page-content page-content page-content page-content page-content";
+    position: relative;
 }
 
 .page-content{
     grid-area: page-content;
-    height: 90vh;
-    width: calc(100vw - 15vw);
+    margin-top: 4%;
+    margin-left: 14%;
+    min-height: calc(100vh - 56px);
+    min-width: calc(100vw - 15vw - 1.5rem);
     position: relative;
+    padding: 0.5rem;
+}
+
+@media screen and (max-width:992px) {
+    .main-page{
+        grid-template-areas: 
+          "header header header"
+          "page-content page-content page-content"
+          "navbar navbar navbar"
+    }
+}
+
+
+@media screen and (max-width:768px) {
+    .page-content{
+        margin: 3rem ;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .page-content{
+        margin: 2rem 1rem;
+        padding: 2rem 1rem;
+    }
 }

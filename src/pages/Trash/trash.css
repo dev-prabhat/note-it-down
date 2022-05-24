@@ -3,3 +3,14 @@
     align-items: center;
     flex-wrap: wrap;
 }
+
+.empty-message{
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+@media screen and (max-width:600px) {
+    .empty-message{
+        margin: 10% auto;
+    }
+}

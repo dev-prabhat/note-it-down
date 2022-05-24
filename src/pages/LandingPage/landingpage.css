@@ -1,26 +1,70 @@
 .landing-page-container{
     display: grid;
-    grid-template-columns: repeat(2,1fr);
-    grid-template-areas: "hero-info hero-image";
-    height: calc(100vh - 5rem);
+    grid-template-columns: repeat(1,1fr);
+    grid-template-areas: "hero-info";
+    min-height: 100vh;
 
-    margin: 2.5rem 5rem;
+    padding: 2.5rem 5rem;
 }
 
 .hero-info{
     grid-area: hero-info;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
+    text-align: center;
 }
 
-.hero-image{
-   grid-row: hero-image; 
-   height: 100%;
+.hero-title{
+    font-size: 3rem;
+    line-height: 4rem;
+}
+
+.hero-subtitle{
+    font-size: 2rem;
+    line-height: 2.5rem;
+}
+
+.hero-description{
+    font-size: 1.5rem;
+    line-height: 2rem;
 }
 
 .highlight{
     color: var(--primary-theme-color);
     text-decoration: none;
+}
+
+@media screen and (max-width:768px) {
+    .landing-page-container{
+        padding: 2.5rem ;
+    }
+    .hero-title{
+        font-size: 2rem;
+        line-height: 3rem;
+    }
+
+    .hero-subtitle{
+        font-size: 1.5rem;
+        line-height: 2rem;
+        margin: 2rem 0;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .hero-title{
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+
+    /* .hero-subtitle{
+        font-size: 1rem;
+        line-height: 1rem;
+    } */
+
+    .hero-description{
+        font-size: 1.25rem;
+        line-height: 1.5rem;
+    }
 }

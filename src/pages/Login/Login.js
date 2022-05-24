@@ -13,10 +13,7 @@ export const Login = () => {
   const {loginData, setLoginData,handleLogin} = useAuth()
     return(
       <>
-         <main className="d-flex login-page"> 
-           <figure className="img-wrapper">
-              <img className="img-responsive" src={`${process.env.PUBLIC_URL}/svg/Add notes-bro.svg`} alt="notes_bro"/>
-           </figure>
+         <main className="login-page"> 
           <form className="login-form border-radius-xs" onSubmit={handleLogin}>
             <h1 className="head-md text-center text-gray padding-xs margin-xs">Welcome to NoteIt-<span className="highlight">Down</span></h1>
             <label className="form-label">Email Address:</label>
