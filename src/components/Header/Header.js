@@ -1,15 +1,16 @@
-import { MdLogout } from "react-icons/md";
-import { useAuth ,useFilter} from "../../context"
+import { MdLogout ,MdDarkMode,MdLightMode} from "react-icons/md";
+import { useAuth ,useFilter, useTheme} from "../../context"
 import { Link, NavLink } from "react-router-dom"
 import "./header.css"
 
 export const Header = () => {
   const {filterState,filterDispatch} = useFilter()
   const {handleLogout} = useAuth()
+  const {theme, setTheme} = useTheme()
   
     return(
-        <header className="website-header">
-            <NavLink to="/" className='hero-title head-lg header-title font-weight-semibold'>
+        <header className={`website-header ${theme === "light" ? "dark-theme" : "light-theme"}`}>
+            <NavLink to="/" className={`head-lg header-title font-weight-semibold ${theme === "light" ? "dark-theme" : "light-theme"}`}>
                 NoteIt <span className="highlight">Down</span>
             </NavLink>
             <input 
@@ -19,6 +20,11 @@ export const Header = () => {
                 value={filterState.search}
             />
             <div className="d-flex">
+              {
+                theme === "dark" ? 
+                <MdDarkMode className="theme-icon" onClick={()=>setTheme("light")} /> : 
+                <MdLightMode className="theme-icon" onClick={()=>setTheme("dark")} />
+              }
               <Link to="/profile">
                 <div className="avatar avatar-xs">
                   <img

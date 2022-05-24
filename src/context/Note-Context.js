@@ -56,7 +56,7 @@ const NoteProvider = ({children}) => {
   } 
 
   const updateNote = (updatedNote) => {
-    if(updateNote.title.trim() !== "" && updateNote.body.trim() !== ""){
+    if(updateNote?.title?.trim() !== "" && updateNote?.body?.trim() !== ""){
       operation({
         method:"post",
         url:`/api/notes/${updatedNote._id}`,

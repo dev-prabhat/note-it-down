@@ -48,7 +48,8 @@ const FilterProvider = ({children}) => {
                 return{
                     byTags:[],
                     byDate:'',
-                    byPriority:[]
+                    byPriority:[],
+                    search:""
                 }
             default:
               return state
@@ -73,7 +74,7 @@ const FilterProvider = ({children}) => {
             filterNotes = filterNotes.filter(note => byPriority.includes(note.priority))
         }
 
-        filterNotes = filterNotes.filter(note => note.title.toLowerCase().includes(search.toLowerCase()))
+        filterNotes = filterNotes.filter(note => note?.title?.toLowerCase().includes(search?.toLowerCase()))
         return filterNotes
     }
 

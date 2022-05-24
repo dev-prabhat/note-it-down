@@ -4,6 +4,7 @@ import {ModalProvider,useModal} from "./Modal-Context"
 import {TrashProvider,useTrash} from "./Trash-Content"
 import {AuthProvider,useAuth} from "./Auth-Context"
 import {FilterProvider,useFilter} from "./Filter-Context"
+import { ThemeProvider,useTheme } from './Theme-context'
 
 export {
     ArchiveProvider,
@@ -17,5 +18,7 @@ export {
     AuthProvider,
     useAuth,
     FilterProvider,
-    useFilter
+    useFilter,
+    ThemeProvider,
+    useTheme
 }
