@@ -10,7 +10,7 @@ export const Header = () => {
   
     return(
         <header className={`website-header ${theme === "light" ? "dark-theme" : "light-theme"}`}>
-            <NavLink to="/" className={`head-lg header-title font-weight-semibold ${theme === "light" ? "dark-theme" : "light-theme"}`}>
+            <NavLink to="/" className={`header-title font-weight-semibold ${theme === "light" ? "dark-theme" : "light-theme"}`}>
                 NoteIt <span className="highlight">Down</span>
             </NavLink>
             <input 
@@ -26,7 +26,7 @@ export const Header = () => {
                 <MdLightMode className="theme-icon" onClick={()=>setTheme("dark")} />
               }
               <Link to="/profile">
-                <div className="avatar avatar-xs">
+                <div className="avatar header-avatar">
                   <img
                     className="img-responsive img-round"
                     src={process.env.PUBLIC_URL +"/svg/avatarIcon.svg"}

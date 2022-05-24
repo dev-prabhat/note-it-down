@@ -11,9 +11,15 @@ export const NavBar = () => {
     return(
         <>
           <aside className={`side-navbar ${theme === "light" ? "dark-theme" : "light-theme"}`}>
-              <NavLink to="/home" className={activeStyle}> <AiOutlineHome className="icon-style head-md"/> Home</NavLink>
-              <NavLink to="/archive" className={activeStyle}><BsArchive className="icon-style head-md"/> Archive</NavLink>
-              <NavLink to="/trash" className={activeStyle}><BsTrash className="icon-style head-md"/> Trash</NavLink>
+              <NavLink to="/home" className={activeStyle}> 
+                <AiOutlineHome className="nav-icon"/> <span className="nav-option"> Home </span> 
+              </NavLink>
+              <NavLink to="/archive" className={activeStyle}>
+                <BsArchive className="nav-icon"/>  <span className="nav-option"> Archive </span>
+              </NavLink>
+              <NavLink to="/trash" className={activeStyle}>
+                  <BsTrash className="nav-icon"/>  <span className="nav-option"> Trash </span>
+              </NavLink>
           </aside>
         </>
     )

@@ -5,9 +5,9 @@
 }
 
 .filter-icon__wrapper{
-    position: absolute;
+    position: fixed;
     right: 2.5%;
-    top: 2.5%;
+    top: 12.5%;
 
     display: flex;
     align-items: center;
@@ -26,14 +26,14 @@
 }
 
 .create-icon__wrapper{
-    position: absolute;
+    position: fixed;
     bottom: 2.5%;
     right: 2.5%;
 
     display: flex;
     align-items: center;
     justify-content: center;
-   
+
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
@@ -44,4 +44,21 @@
     font-size: 2rem;
     cursor: pointer;
     color: var(--secondary-theme-color);
+}
+
+@media screen and (max-width:768px) {
+    .create-icon__wrapper{
+        bottom: 13%;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .create-icon,.filter-icon{
+        font-size: 1.5rem;
+    }
+
+    .filter-icon__wrapper,.create-icon__wrapper{
+        width: 2rem;
+        height: 2rem;
+    }
 }

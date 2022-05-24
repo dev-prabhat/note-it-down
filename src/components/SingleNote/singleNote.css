@@ -6,6 +6,11 @@
     position: relative;
 }
 
+.note-title{
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
 .pin-Icon{
     position: absolute;
     top:5px;
@@ -31,4 +36,22 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+@media screen and (max-width:768px) {
+    .single-note{
+        width: 90%;
+        margin: 5px auto;
+    }  
+}
+
+@media screen and (max-width:600px) {
+    .note-title{
+        font-size: 1rem;
+        line-height: 1rem;
+    }
+
+    .original-date{
+        font-size: 10px;
+    }
 }
