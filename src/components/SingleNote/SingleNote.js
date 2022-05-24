@@ -39,7 +39,7 @@ export const SingleNote = ({note, setEditModal, isHomePage = false, isTrashPage 
             style={{backgroundColor:color}}
         >
             <h2 className="note-title">{title}</h2>
-            <div className="text-sm padding-sm" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(body) }}></div>
+            <div className="text-sm padding-sm" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(body,{FORCE_BODY: true}) }}></div>
             <div className="tag-container">
                 {tags.map(tag => (
                     <p key={tag.value} className="text-sm tag">{tag.value}</p>
